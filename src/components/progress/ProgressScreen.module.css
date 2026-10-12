@@ -1,0 +1,98 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  max-width: 480px;
+  margin: 0 auto;
+  background-color: var(--kaelo-bg, #FAFAF8);
+  color: var(--text-primary, #111111);
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: calc(84px + env(safe-area-inset-bottom, 0px));
+}
+
+.header {
+  padding: 20px 20px 14px;
+  padding-top: max(16px, env(safe-area-inset-top));
+  position: sticky;
+  top: 0;
+  background-color: var(--header-bg, rgba(250, 250, 248, 0.95));
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  z-index: 10;
+  border-bottom: 1px solid var(--border-color, #E8E8E3);
+}
+
+.title {
+  font-size: clamp(22px, 6vw, 26px);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--text-primary, #111111);
+  margin: 0;
+}
+
+.subtitle {
+  font-size: 13px;
+  color: var(--text-muted, #71717A);
+  margin-top: 4px;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  padding: clamp(14px, 3.5vw, 20px);
+  gap: clamp(14px, 3vh, 20px);
+}
+
+.heroStats {
+  background: var(--bg-card, #FFFFFF);
+  border: 1px solid var(--border-color, #E8E8E3);
+  border-radius: var(--radius-xl, 24px);
+  padding: clamp(14px, 3.5vw, 20px) clamp(10px, 3vw, 16px);
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: clamp(6px, 2vw, 10px);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+}
+
+:global([data-theme="dark"]) .heroStats {
+  background: linear-gradient(165deg, #151A15 0%, #0E120E 100%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+}
+
+:global([data-theme="night"]) .heroStats {
+  background: linear-gradient(165deg, #1D153B 0%, #120C26 100%);
+  border: 1px solid rgba(169, 130, 255, 0.25);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+}
+
+.heroStatItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.heroStatVal {
+  font-size: clamp(14px, 4vw, 17px);
+  font-weight: 800;
+  color: var(--text-primary, #111111);
+  letter-spacing: -0.02em;
+}
+
+.heroStatLabel {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--text-muted, #888888);
+  margin-top: 2px;
+}
+
+@media (max-width: 360px) {
+  .heroStats {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+}

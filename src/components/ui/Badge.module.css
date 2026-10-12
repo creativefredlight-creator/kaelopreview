@@ -1,0 +1,49 @@
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+/* Sizes */
+.size-sm {
+  padding: 4px 8px;
+  font-size: 12px;
+}
+
+.size-md {
+  padding: 6px 12px;
+  font-size: 14px;
+}
+
+.size-lg {
+  padding: 8px 16px;
+  font-size: 16px;
+}
+
+/* Variants */
+.variant-lime {
+  background-color: var(--kaelo-lime, #C7FF35);
+  color: #111111 !important;
+}
+
+.variant-purple {
+  background-color: var(--kaelo-purple, #A982FF);
+  color: #FFFFFF;
+}
+
+.variant-gray {
+  background-color: var(--bg-card-subtle, #F1F1ED);
+  color: var(--text-primary, #111111);
+  border: 1px solid var(--border-color, #D8D8D2);
+}
+
+.variant-outlined {
+  background-color: transparent;
+  color: var(--text-primary, #111111);
+  border: 1px solid var(--border-color, #D8D8D2);
+}

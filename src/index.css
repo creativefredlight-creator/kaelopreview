@@ -1,0 +1,471 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+/* ==========================================
+   KAELO DESIGN TOKENS
+   ========================================== */
+:root {
+  /* Primary Colors */
+  --kaelo-lime: #C7FF35;
+  --kaelo-lime-dark: #A8D92E;
+  --kaelo-lime-light: #E0FF8A;
+  --kaelo-lime-subtle: #F4FFD6;
+  --kaelo-lime-glow: rgba(199, 255, 53, 0.25);
+
+  /* Secondary Purple */
+  --kaelo-purple: #A982FF;
+  --kaelo-purple-dark: #8B5CF6;
+  --kaelo-purple-light: #C4B0FF;
+  --kaelo-purple-subtle: #F0EBFF;
+  --kaelo-purple-glow: rgba(169, 130, 255, 0.2);
+
+  /* Neutrals */
+  --kaelo-black: #111111;
+  --kaelo-dark: #1A1A1A;
+  --kaelo-gray-900: #2A2A2A;
+  --kaelo-gray-800: #3A3A3A;
+  --kaelo-gray-700: #555555;
+  --kaelo-gray-600: #777777;
+  --kaelo-gray-500: #999999;
+  --kaelo-gray-400: #BBBBBB;
+  --kaelo-gray-300: #D8D8D2;
+  --kaelo-gray-200: #E8E8E3;
+  --kaelo-gray-100: #F1F1ED;
+  --kaelo-gray-50: #F7F7F4;
+  --kaelo-white: #FFFFFF;
+
+  /* Semantic */
+  --kaelo-success: #34D399;
+  --kaelo-warning: #FBBF24;
+  --kaelo-danger: #F87171;
+  --kaelo-info: var(--kaelo-purple);
+
+  /* ==========================================
+     THEME VARIABLES (LIGHT / NIGHT / DARK)
+     ========================================== */
+  /* Default: Light (Creative Electric Purple Canvas + Warm Cream App) */
+  --bg-canvas: #5227CC;
+  --bg-canvas-gradient: radial-gradient(circle at 15% 15%, rgba(199, 255, 53, 0.25) 0%, transparent 45%),
+                        radial-gradient(circle at 85% 85%, rgba(169, 130, 255, 0.3) 0%, transparent 50%),
+                        linear-gradient(135deg, #4823B8 0%, #5B2FE6 50%, #3B1B9E 100%);
+  --bg-app: #FAF9F5;
+  --bg-card: #FFFFFF;
+  --bg-card-elevated: #FFFFFF;
+  --bg-card-subtle: #F1F1ED;
+  --bg-card-muted: #E8E8E3;
+  --bg-input: #FFFFFF;
+  --surface-dark: #111111;
+
+  --text-primary: #111111;
+  --text-secondary: #374151; /* High contrast charcoal */
+  --text-muted: #6B7280;     /* WCAG AA compliant */
+
+  --border-color: #E8E8E3;
+  --border-subtle: #EFEFEA;
+  --border-strong: #111111;
+  --surface-card: #FFFFFF;
+  --surface-hover: #F0F0F2;
+  --card-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+
+  --accent-lime: #C7FF35;
+  --accent-lime-dark: #8EB81E;
+  --accent-lime-fg: #111111;
+  --accent-purple: #A982FF;
+  --accent-orange: #FF453A;
+
+  --header-bg: rgba(250, 249, 245, 0.94);
+  --nav-bg: rgba(255, 255, 255, 0.96);
+
+  /* Theme Token Aliases */
+  --color-lime: var(--accent-lime);
+  --color-lime-500: var(--accent-lime);
+  --primary-lime: var(--accent-lime);
+  --lime: var(--accent-lime);
+
+  --color-purple: var(--accent-purple);
+  --color-purple-500: var(--accent-purple);
+  --secondary-purple: var(--accent-purple);
+  --purple: var(--accent-purple);
+
+  --color-black: var(--text-primary);
+  --black: var(--text-primary);
+
+  --color-white: var(--bg-card);
+  --white: var(--bg-card);
+
+  --color-gray-500: var(--text-muted);
+  --color-neutrals-f7: var(--bg-card-subtle);
+  --color-neutrals-e8: var(--bg-card-muted);
+  --color-neutrals-d8: var(--border-color);
+  --neutrals-f7: var(--bg-card-subtle);
+  --neutrals-e8: var(--bg-card-muted);
+  --neutrals-d8: var(--border-color);
+  --gray: var(--text-muted);
+  --kaelo-bg: var(--bg-app);
+  --kaelo-neutral-dark: #FFFFFF;
+  --kaelo-neutral-light: #6B7280;
+
+  /* Typography */
+  --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-size-xs: 0.6875rem;    /* 11px */
+  --font-size-sm: 0.75rem;      /* 12px */
+  --font-size-base: 0.875rem;   /* 14px */
+  --font-size-md: 1rem;         /* 16px */
+  --font-size-lg: 1.125rem;     /* 18px */
+  --font-size-xl: 1.375rem;     /* 22px */
+  --font-size-2xl: 1.75rem;     /* 28px */
+  --font-size-3xl: 2.25rem;     /* 36px */
+  --font-size-4xl: 3rem;        /* 48px */
+  --font-size-5xl: 4rem;        /* 64px */
+
+  /* Spacing */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-20: 5rem;
+
+  /* Radius */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 20px;
+  --radius-2xl: 24px;
+  --radius-3xl: 28px;
+  --radius-full: 9999px;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.04), 0 1px 2px rgba(0,0,0,0.03);
+  --shadow-md: 0 4px 12px rgba(0,0,0,0.06), 0 2px 4px rgba(0,0,0,0.04);
+  --shadow-lg: 0 8px 24px rgba(0,0,0,0.08), 0 4px 8px rgba(0,0,0,0.04);
+  --shadow-xl: 0 16px 40px rgba(0,0,0,0.1), 0 8px 16px rgba(0,0,0,0.06);
+  --shadow-lime: 0 4px 20px rgba(199, 255, 53, 0.3);
+  --shadow-purple: 0 4px 20px rgba(169, 130, 255, 0.25);
+
+  /* Transitions */
+  --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-base: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 400ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-spring: 500ms cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  /* Layout & Safe Areas */
+  --app-max-width: 480px;
+  --bottom-nav-height: 72px;
+  --safe-area-top: env(safe-area-inset-top, 0px);
+  --safe-area-bottom: env(safe-area-inset-bottom, 0px);
+  --safe-area-left: env(safe-area-inset-left, 0px);
+  --safe-area-right: env(safe-area-inset-right, 0px);
+}
+
+/* 2. NIGHT MOOD (Celestial Midnight Indigo & Glowing Stars) */
+[data-theme="night"] {
+  --bg-canvas: #090616;
+  --bg-canvas-gradient: radial-gradient(circle at 20% 20%, rgba(169, 130, 255, 0.28) 0%, transparent 45%),
+                        radial-gradient(circle at 80% 80%, rgba(199, 255, 53, 0.12) 0%, transparent 50%),
+                        linear-gradient(145deg, #070412 0%, #120B2C 50%, #060310 100%);
+  --bg-app: #120C26;
+  --bg-card: #1D153B;
+  --bg-card-elevated: #281E52;
+  --bg-card-subtle: #291E52;
+  --bg-card-muted: #342766;
+  --bg-input: #171032;
+  --surface-card: #1D153B;
+  --surface-hover: #291E52;
+  --surface-dark: #0E0824;
+
+  --text-primary: #FFFFFF;
+  --text-secondary: #E2D9F3;
+  --text-muted: #B8A9D9;
+
+  --border-color: rgba(196, 181, 253, 0.28);
+  --border-subtle: rgba(196, 181, 253, 0.16);
+  --border-strong: #C4B5FD;
+  --card-shadow: 0 8px 32px rgba(0, 0, 0, 0.55);
+
+  --accent-lime: #C7FF35;
+  --accent-lime-dark: #A8D92E;
+  --accent-lime-fg: #111111;
+  --accent-purple: #C4B0FF;
+  --accent-orange: #FF5E54;
+
+  --header-bg: rgba(18, 12, 38, 0.94);
+  --nav-bg: rgba(23, 16, 49, 0.96);
+
+  /* Automatic theme contrast mapping */
+  --kaelo-white: #FFFFFF;
+  --kaelo-black: #111111;
+  --kaelo-dark: var(--bg-card-elevated);
+  --color-black: var(--text-primary);
+  --black: var(--text-primary);
+  --color-white: var(--bg-card);
+  --white: var(--bg-card);
+  --kaelo-gray-50: var(--bg-card-subtle);
+  --kaelo-gray-100: var(--bg-card-subtle);
+  --kaelo-gray-200: var(--border-color);
+  --kaelo-gray-300: rgba(169, 130, 255, 0.45);
+  --kaelo-gray-400: #C4B5FD;
+  --kaelo-gray-500: #DDD6FE;
+  --kaelo-gray-600: #EDE9FE;
+  --kaelo-gray-700: #F5F3FF;
+  --kaelo-gray-800: #FAF8FF;
+  --kaelo-gray-900: #FFFFFF;
+  --neutral-light: var(--bg-card-subtle);
+  --neutrals-f7: var(--bg-card-subtle);
+  --neutrals-e8: var(--bg-card-muted);
+  --neutrals-d8: var(--border-color);
+  --gray: var(--text-muted);
+  --kaelo-bg: var(--bg-app);
+  --kaelo-neutral-dark: var(--bg-card);
+  --kaelo-neutral-light: var(--text-muted);
+}
+
+/* 3. DARK MOOD (Stealth OLED Obsidian & High-Contrast Neon from References) */
+[data-theme="dark"] {
+  --bg-canvas: #060806;
+  --bg-canvas-gradient: radial-gradient(circle at 50% -10%, rgba(199, 255, 53, 0.16) 0%, rgba(52, 211, 153, 0.08) 35%, transparent 65%),
+                        linear-gradient(180deg, #0A0D0A 0%, #060806 100%);
+  --bg-app: #0B0E0B;
+  --bg-card: #141814;
+  --bg-card-elevated: #1C231C;
+  --bg-card-subtle: #1E261E;
+  --bg-card-muted: #263226;
+  --bg-input: #111611;
+  --surface-card: #141814;
+  --surface-hover: #1E261E;
+  --surface-dark: #070A07;
+
+  --text-primary: #FFFFFF;
+  --text-secondary: #E4E4E7;
+  --text-muted: #A1A1AA;
+
+  --border-color: rgba(255, 255, 255, 0.14);
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-strong: rgba(199, 255, 53, 0.45);
+  --card-shadow: 0 10px 32px rgba(0, 0, 0, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.07);
+  --shadow-lime: 0 0 20px rgba(199, 255, 53, 0.38);
+
+  --accent-lime: #C7FF35;
+  --accent-lime-dark: #A8D92E;
+  --accent-lime-fg: #111111;
+  --accent-purple: #A982FF;
+  --accent-orange: #FF453A;
+
+  --header-bg: rgba(11, 14, 11, 0.94);
+  --nav-bg: rgba(13, 16, 13, 0.96);
+
+  /* Automatic theme contrast mapping */
+  --kaelo-white: #FFFFFF;
+  --kaelo-black: #111111;
+  --kaelo-dark: var(--bg-card-elevated);
+  --color-black: var(--text-primary);
+  --black: var(--text-primary);
+  --color-white: var(--bg-card);
+  --white: var(--bg-card);
+  --kaelo-gray-50: var(--bg-card-subtle);
+  --kaelo-gray-100: var(--bg-card-subtle);
+  --kaelo-gray-200: var(--border-color);
+  --kaelo-gray-300: rgba(255, 255, 255, 0.16);
+  --kaelo-gray-400: #A1A1AA;
+  --kaelo-gray-500: #9CA3AF;
+  --kaelo-gray-600: #D4D4D8;
+  --kaelo-gray-700: #E4E4E7;
+  --kaelo-gray-800: #F4F4F5;
+  --kaelo-gray-900: #FFFFFF;
+  --neutral-light: var(--bg-card-subtle);
+  --neutrals-f7: var(--bg-card-subtle);
+  --neutrals-e8: var(--bg-card-muted);
+  --neutrals-d8: var(--border-color);
+  --gray: var(--text-muted);
+  --kaelo-bg: var(--bg-app);
+  --kaelo-neutral-dark: var(--bg-card);
+  --kaelo-neutral-light: var(--text-muted);
+}
+
+/* ==========================================
+   CSS RESET & BASE
+   ========================================== */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  font-family: var(--font-family);
+  font-size: var(--font-size-base);
+  color: var(--text-primary);
+  background-color: var(--bg-canvas);
+  background-image: var(--bg-canvas-gradient);
+  background-attachment: fixed;
+  background-size: cover;
+  line-height: 1.5;
+  overflow-x: hidden;
+  min-height: 100vh;
+  min-height: 100dvh;
+  transition: background-color 0.35s ease, color 0.35s ease;
+}
+
+#root {
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+img, svg {
+  display: block;
+  max-width: 100%;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+input, textarea, select {
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+  border: none;
+  outline: none;
+  background: none;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+/* ==========================================
+   APP SHELL
+   ========================================== */
+.app-shell {
+  max-width: var(--app-max-width);
+  margin: 0 auto;
+  min-height: 100vh;
+  min-height: 100dvh;
+  background: var(--bg-app);
+  color: var(--text-primary);
+  position: relative;
+  box-shadow: 0 16px 60px rgba(0, 0, 0, 0.28);
+  transition: background-color 0.35s ease, color 0.35s ease;
+}
+
+@media (min-width: 481px) {
+  body {
+    padding: 24px 0;
+  }
+  .app-shell {
+    border-radius: 36px;
+    border: 2px solid var(--border-color);
+    overflow: hidden;
+  }
+}
+
+/* ==========================================
+   SCROLLBAR
+   ========================================== */
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--kaelo-gray-300);
+  border-radius: var(--radius-full);
+}
+
+/* ==========================================
+   TYPOGRAPHY UTILITIES
+   ========================================== */
+.text-xs { font-size: var(--font-size-xs); }
+.text-sm { font-size: var(--font-size-sm); }
+.text-base { font-size: var(--font-size-base); }
+.text-md { font-size: var(--font-size-md); }
+.text-lg { font-size: var(--font-size-lg); }
+.text-xl { font-size: var(--font-size-xl); }
+.text-2xl { font-size: var(--font-size-2xl); }
+.text-3xl { font-size: var(--font-size-3xl); }
+.text-4xl { font-size: var(--font-size-4xl); }
+
+.font-light { font-weight: 300; }
+.font-regular { font-weight: 400; }
+.font-medium { font-weight: 500; }
+.font-semibold { font-weight: 600; }
+.font-bold { font-weight: 700; }
+.font-extrabold { font-weight: 800; }
+.font-black { font-weight: 900; }
+
+.text-muted { color: var(--kaelo-gray-600); }
+.text-subtle { color: var(--kaelo-gray-500); }
+.text-lime { color: var(--kaelo-lime-dark); }
+.text-purple { color: var(--kaelo-purple); }
+
+/* ==========================================
+   ANIMATION UTILITIES
+   ========================================== */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInScale {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes slideUp {
+  from { transform: translateY(100%); }
+  to { transform: translateY(0); }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes limeGlow {
+  0%, 100% { box-shadow: 0 0 0 0 var(--kaelo-lime-glow); }
+  50% { box-shadow: 0 0 20px 4px var(--kaelo-lime-glow); }
+}
+
+@keyframes xpFloat {
+  0% { opacity: 0; transform: translateY(0) scale(0.8); }
+  30% { opacity: 1; transform: translateY(-10px) scale(1); }
+  100% { opacity: 0; transform: translateY(-40px) scale(0.9); }
+}
+
+.animate-fade-in { animation: fadeIn var(--transition-base) ease-out; }
+.animate-fade-in-up { animation: fadeInUp var(--transition-slow) ease-out; }
+.animate-fade-in-scale { animation: fadeInScale var(--transition-base) ease-out; }

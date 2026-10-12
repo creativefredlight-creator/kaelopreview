@@ -1,0 +1,656 @@
+/* ==========================================
+   KAELO AUTH MODAL STYLES (THEME-ADAPTIVE & CRISP)
+   ========================================== */
+.backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+}
+
+.modalCard {
+  background: var(--bg-card, #FFFFFF);
+  color: var(--text-primary, #111111);
+  border: 2px solid var(--border-color, #E8E8E3);
+  border-radius: 28px;
+  width: 100%;
+  max-width: 440px;
+  padding: clamp(20px, 4vw, 28px);
+  position: relative;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+  overflow: hidden;
+}
+
+.closeBtn {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--bg-card-subtle, #F1F1ED);
+  border: 1px solid var(--border-color, #E8E8E3);
+  color: var(--text-primary, #111111);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.closeBtn:hover {
+  background: var(--border-color, #E8E8E3);
+  transform: scale(1.05);
+}
+
+.modalHeader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.brandBadge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: #111111;
+  padding: 6px 16px 6px 10px;
+  border-radius: 9999px;
+  border: 1.5px solid #222222;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  margin-bottom: 12px;
+}
+
+.stickerRow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: #111111;
+  padding: 6px 16px 6px 10px;
+  border-radius: 9999px;
+  border: 1.5px solid #222222;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  margin-bottom: 12px;
+}
+
+.buddyIcon {
+  width: 38px;
+  height: 38px;
+  object-fit: contain;
+  filter: drop-shadow(0 4px 8px rgba(0,0,0,0.12));
+}
+
+.brandTitle {
+  font-size: 20px;
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  color: var(--text-primary, #111111);
+}
+
+.limeDot {
+  color: var(--accent-lime, #C7FF35);
+}
+
+.headline {
+  font-size: clamp(20px, 5vw, 24px);
+  font-weight: 800;
+  color: var(--text-primary, #111111);
+  letter-spacing: -0.02em;
+  margin: 4px 0 6px;
+}
+
+.subheadline {
+  font-size: 13px;
+  color: var(--text-muted, #6B7280);
+  line-height: 1.45;
+  max-width: 320px;
+  margin: 0;
+}
+
+/* Tabs */
+.modeTabs {
+  display: flex;
+  background: var(--bg-card-subtle, #F1F1ED);
+  border: 1px solid var(--border-color, #E8E8E3);
+  border-radius: 9999px;
+  padding: 4px;
+  gap: 4px;
+  margin-bottom: 20px;
+}
+
+.tabBtn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 700;
+  padding: 9px 14px;
+  border-radius: 9999px;
+  border: none;
+  background: transparent;
+  color: var(--text-muted, #6B7280);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.tabActive {
+  background: var(--bg-card, #FFFFFF);
+  color: var(--text-primary, #111111);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.googleIconSvg {
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+/* Google Account Selection */
+.googleContent {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.accountSelector {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.accountItem {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  background: var(--bg-card-subtle, #F7F7F4);
+  border: 1px solid var(--border-color, #E8E8E3);
+  border-radius: 16px;
+  cursor: pointer;
+  text-align: left;
+  width: 100%;
+  transition: all 0.2s ease;
+}
+
+.accountItem:hover {
+  background: var(--border-color, #E8E8E3);
+  border-color: var(--border-strong, #111111);
+  transform: translateY(-1px);
+}
+
+.accountAvatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--accent-lime, #C7FF35);
+  color: #111111;
+  font-weight: 800;
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.accountInfo {
+  flex: 1;
+  min-width: 0;
+}
+
+.accountName {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-primary, #111111);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.accountEmail {
+  font-size: 12px;
+  color: var(--text-muted, #6B7280);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.accountArrow {
+  color: var(--text-muted, #6B7280);
+  flex-shrink: 0;
+}
+
+.switchAccountBtn {
+  background: none;
+  border: none;
+  color: #6D28D9;
+  font-size: 12.5px;
+  font-weight: 800;
+  cursor: pointer;
+  text-align: center;
+  padding: 6px;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color 0.15s ease;
+}
+
+.switchAccountBtn:hover {
+  color: #4C1D95;
+}
+
+.customGoogleForm {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.cancelTextBtn {
+  background: none;
+  border: none;
+  color: var(--text-muted, #6B7280);
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 4px;
+}
+
+/* Email Form */
+.emailForm {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.inputLabel {
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  color: var(--text-muted, #6B7280);
+  text-transform: uppercase;
+}
+
+.inputField {
+  width: 100%;
+  padding: 13px 16px;
+  background: var(--bg-card-subtle, #F7F7F4);
+  border: 1.5px solid var(--border-color, #E8E8E3);
+  border-radius: 14px;
+  color: var(--text-primary, #111111);
+  font-size: 14px;
+  font-family: inherit;
+  font-weight: 600;
+  outline: none;
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.inputField:focus {
+  border-color: var(--accent-lime, #C7FF35);
+  background: var(--bg-card, #FFFFFF);
+  box-shadow: 0 0 0 3px rgba(199, 255, 53, 0.2);
+}
+
+.submitBtn {
+  background: var(--accent-lime, #C7FF35);
+  color: #111111;
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  padding: 14px 20px;
+  border-radius: 9999px;
+  border: 2px solid var(--border-strong, #111111);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  box-shadow: 0 4px 0 var(--border-strong, #111111);
+  transition: all 0.15s ease;
+  margin-top: 4px;
+}
+
+.submitBtn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 0 var(--border-strong, #111111);
+}
+
+.submitBtn:active:not(:disabled) {
+  transform: translateY(2px);
+  box-shadow: 0 2px 0 var(--border-strong, #111111);
+}
+
+.submitBtn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Success & Error alerts */
+.successBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 24px 12px;
+  gap: 12px;
+}
+
+.successIcon {
+  color: var(--accent-lime, #C7FF35);
+}
+
+.successMessage {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-primary, #111111);
+}
+
+.errorAlert {
+  background: rgba(239, 68, 68, 0.12);
+  color: #EF4444;
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  border-radius: 10px;
+  padding: 10px 14px;
+  font-size: 12px;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 12px;
+}
+
+/* Footer */
+.modalFooter {
+  margin-top: 20px;
+  padding-top: 14px;
+  border-top: 1px solid var(--border-color, #E8E8E3);
+}
+
+.trustBadge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-muted, #6B7280);
+  text-align: center;
+}
+
+.trustIcon {
+  color: var(--accent-lime, #C7FF35);
+  flex-shrink: 0;
+}
+
+/* ==========================================
+   DARK MOOD AESTHETIC FOR AUTH MODAL
+   ========================================== */
+:global([data-theme="dark"]) .modalCard {
+  background: linear-gradient(165deg, #182218 0%, #0F140F 100%);
+  border: 1.5px solid rgba(199, 255, 53, 0.25);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+:global([data-theme="night"]) .modalCard {
+  background: linear-gradient(165deg, #241A4E 0%, #150E32 100%);
+  border: 1.5px solid rgba(169, 130, 255, 0.35);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+:global([data-theme="dark"]) .closeBtn,
+:global([data-theme="night"]) .closeBtn {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.12);
+  color: #FFFFFF;
+}
+
+:global([data-theme="dark"]) .brandTitle,
+:global([data-theme="night"]) .brandTitle {
+  color: #FFFFFF;
+}
+
+:global([data-theme="dark"]) .headline,
+:global([data-theme="night"]) .headline {
+  color: #FFFFFF;
+}
+
+:global([data-theme="dark"]) .subheadline {
+  color: #9CA3AF;
+}
+
+:global([data-theme="night"]) .subheadline {
+  color: #DDD6FE;
+}
+
+:global([data-theme="dark"]) .modeTabs,
+:global([data-theme="night"]) .modeTabs {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+:global([data-theme="dark"]) .tabBtn {
+  color: #9CA3AF;
+}
+
+:global([data-theme="night"]) .tabBtn {
+  color: #DDD6FE;
+}
+
+:global([data-theme="dark"]) .tabActive,
+:global([data-theme="night"]) .tabActive {
+  background: #1C241C;
+  color: var(--accent-lime, #C7FF35);
+  box-shadow: 0 0 12px rgba(199, 255, 53, 0.2);
+}
+
+:global([data-theme="night"]) .tabActive {
+  background: #281E52;
+  color: var(--accent-purple, #C4B0FF);
+  box-shadow: 0 0 12px rgba(169, 130, 255, 0.25);
+}
+
+:global([data-theme="dark"]) .accountItem {
+  background: #141814;
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+:global([data-theme="night"]) .accountItem {
+  background: #1D153B;
+  border-color: rgba(169, 130, 255, 0.2);
+}
+
+:global([data-theme="dark"]) .accountItem:hover {
+  background: #1B211B;
+  border-color: rgba(199, 255, 53, 0.4);
+}
+
+:global([data-theme="night"]) .accountItem:hover {
+  background: #281E52;
+  border-color: rgba(169, 130, 255, 0.45);
+}
+
+:global([data-theme="dark"]) .accountName,
+:global([data-theme="night"]) .accountName {
+  color: #FFFFFF;
+}
+
+:global([data-theme="dark"]) .accountEmail {
+  color: #9CA3AF;
+}
+
+:global([data-theme="night"]) .accountEmail {
+  color: #DDD6FE;
+}
+
+:global([data-theme="dark"]) .inputLabel {
+  color: #D4D4D8;
+}
+
+:global([data-theme="night"]) .inputLabel {
+  color: #EDE9FE;
+}
+
+:global([data-theme="dark"]) .inputField {
+  background: #0E120E;
+  border-color: rgba(255, 255, 255, 0.12);
+  color: #FFFFFF;
+}
+
+:global([data-theme="night"]) .inputField {
+  background: #171032;
+  border-color: rgba(169, 130, 255, 0.25);
+  color: #FFFFFF;
+}
+
+:global([data-theme="dark"]) .inputField:focus {
+  background: #141814;
+  border-color: var(--accent-lime, #C7FF35);
+  box-shadow: 0 0 0 3px rgba(199, 255, 53, 0.25);
+}
+
+:global([data-theme="night"]) .inputField:focus {
+  background: #1D153B;
+  border-color: var(--accent-purple, #C4B0FF);
+  box-shadow: 0 0 0 3px rgba(169, 130, 255, 0.25);
+}
+
+:global([data-theme="dark"]) .submitBtn,
+:global([data-theme="night"]) .submitBtn {
+  background: var(--accent-lime, #C7FF35);
+  color: #0A0D0A;
+  border: 1px solid rgba(199, 255, 53, 0.4);
+  box-shadow: 0 4px 16px rgba(199, 255, 53, 0.35);
+}
+
+:global([data-theme="dark"]) .submitBtn:hover:not(:disabled),
+:global([data-theme="night"]) .submitBtn:hover:not(:disabled) {
+  background: #B2E52E;
+  box-shadow: 0 6px 20px rgba(199, 255, 53, 0.45);
+}
+
+:global([data-theme="dark"]) .successMessage,
+:global([data-theme="night"]) .successMessage {
+  color: #FFFFFF;
+}
+
+
+/* Auth Type Segmented Tabs: Create Account vs Sign In */
+.authTypeTabs {
+  display: flex;
+  background: #EFEFEA;
+  border: 1.5px solid #D8D8D2;
+  border-radius: 9999px;
+  padding: 4px;
+  gap: 4px;
+  margin-bottom: 14px;
+  width: 100%;
+}
+
+.authTypeBtn {
+  flex: 1;
+  text-align: center;
+  font-size: 13px;
+  font-weight: 800;
+  padding: 8px 12px;
+  border-radius: 9999px;
+  border: none;
+  background: transparent;
+  color: #4B5563;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.authTypeActive {
+  background: #111111;
+  color: #FFFFFF;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.18);
+}
+
+.bottomAuthSwitch {
+  text-align: center;
+  font-size: 13px;
+  color: #4B5563;
+  margin-top: 14px;
+  font-weight: 600;
+}
+
+.bottomAuthSwitch button {
+  background: none;
+  border: none;
+  color: #6D28D9;
+  font-weight: 800;
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  padding: 0 4px;
+  font-size: 13px;
+  transition: color 0.15s ease;
+}
+
+.bottomAuthSwitch button:hover {
+  color: #4C1D95;
+}
+
+
+:global([data-theme="dark"]) .authTypeTabs {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+:global([data-theme="night"]) .authTypeTabs {
+  background: rgba(169, 130, 255, 0.08);
+  border-color: rgba(169, 130, 255, 0.2);
+}
+
+:global([data-theme="dark"]) .authTypeBtn {
+  color: #9CA3AF;
+}
+
+:global([data-theme="night"]) .authTypeBtn {
+  color: #DDD6FE;
+}
+
+:global([data-theme="dark"]) .authTypeActive {
+  background: var(--accent-lime, #C7FF35);
+  color: #0A0D0A;
+  box-shadow: 0 0 14px rgba(199, 255, 53, 0.3);
+}
+
+:global([data-theme="night"]) .authTypeActive {
+  background: var(--accent-purple, #A982FF);
+  color: #120C28;
+  box-shadow: 0 0 14px rgba(169, 130, 255, 0.35);
+}
+
+:global([data-theme="dark"]) .bottomAuthSwitch,
+:global([data-theme="night"]) .bottomAuthSwitch {
+  color: #9CA3AF;
+}
+
+:global([data-theme="dark"]) .bottomAuthSwitch button {
+  color: var(--accent-lime, #C7FF35);
+}
+
+:global([data-theme="night"]) .bottomAuthSwitch button {
+  color: var(--accent-purple, #C4B0FF);
+}
+
+:global([data-theme="dark"]) .switchAccountBtn {
+  color: var(--accent-lime, #C7FF35);
+}
+
+:global([data-theme="night"]) .switchAccountBtn {
+  color: var(--accent-purple, #C4B0FF);
+}

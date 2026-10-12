@@ -1,0 +1,74 @@
+.container {
+  position: fixed;
+  top: max(16px, env(safe-area-inset-top));
+  left: 16px;
+  right: 16px;
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.toast {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px;
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+  width: 100%;
+  max-width: 400px;
+  pointer-events: auto;
+  font-family: 'Inter', sans-serif;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.title {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.message {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+/* Variants */
+.variant-xp {
+  background-color: var(--kaelo-lime, #C7FF35);
+  color: var(--kaelo-black, #111111);
+}
+
+.variant-achievement {
+  background-color: var(--kaelo-purple, #A982FF);
+  color: var(--kaelo-white, #FFFFFF);
+}
+
+.variant-info {
+  background-color: var(--bg-card-elevated, #FFFFFF);
+  color: var(--text-primary, #111111);
+  border: 1px solid var(--border-color, #F1F1ED);
+}
+
+.variant-warning {
+  background-color: #FFB020;
+  color: #111111;
+}
+
+.variant-error {
+  background-color: #FF3B30;
+  color: #FFFFFF;
+}
+
+.variant-success {
+  background-color: var(--accent-lime, #C7FF35);
+  color: #111111;
+  box-shadow: 0 4px 16px rgba(199, 255, 53, 0.4);
+}

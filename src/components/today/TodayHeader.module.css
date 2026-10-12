@@ -1,0 +1,53 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 4px;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.greeting {
+  font-size: clamp(20px, 5.5vw, 24px);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--text-primary, #111111);
+  margin: 0;
+}
+
+.identity {
+  font-size: clamp(12px, 3.2vw, 13px);
+  font-weight: 600;
+  color: var(--text-secondary, #71717A);
+  margin: 0;
+}
+
+.mascotWrapper {
+  position: relative;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2px;
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.mascotWrapper:hover {
+  transform: scale(1.08);
+}
+
+.onlinePip {
+  position: absolute;
+  bottom: 2px;
+  right: 2px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--accent-lime, #C7FF35);
+  border: 2px solid var(--bg-card, #FFFFFF);
+  box-shadow: 0 0 6px rgba(199, 255, 53, 0.6);
+}

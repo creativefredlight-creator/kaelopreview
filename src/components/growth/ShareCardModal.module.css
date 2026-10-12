@@ -1,0 +1,265 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 4px 0 16px;
+}
+
+.cardPreview {
+  background: #111111;
+  color: #FFFFFF;
+  border-radius: var(--radius-xl, 24px);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  position: relative;
+  overflow: hidden;
+}
+
+.cardPreview::before {
+  content: '';
+  position: absolute;
+  top: -50px;
+  right: -50px;
+  width: 150px;
+  height: 150px;
+  background: radial-gradient(circle, rgba(199, 255, 53, 0.18) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.cardHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.brandRow {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.logoText {
+  font-size: 16px;
+  font-weight: 900;
+  letter-spacing: 0.05em;
+  color: #FFFFFF;
+}
+
+.verifiedDot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--kaelo-lime, #C7FF35);
+}
+
+.cardWatermark {
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.cardBody {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 12px;
+}
+
+.mascotWrapper {
+  margin-top: -4px;
+}
+
+.userTitleRow {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.userName {
+  font-size: 22px;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  margin: 0;
+  color: #FFFFFF;
+}
+
+.identityTag {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--kaelo-lime, #C7FF35);
+}
+
+.achievementHighlight {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 14px;
+  padding: 10px 14px;
+  width: 100%;
+}
+
+.achievementBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  color: #A982FF;
+  margin-bottom: 4px;
+}
+
+.achievementQuote {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.75);
+  margin: 0;
+  line-height: 1.4;
+  font-style: italic;
+}
+
+.statsRow {
+  display: flex;
+  gap: 8px;
+  width: 100%;
+}
+
+.statPill {
+  flex: 1;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+}
+
+.statInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.statNum {
+  font-size: 13px;
+  font-weight: 900;
+  color: #FFFFFF;
+}
+
+.statLabel {
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.statFlame {
+  color: #FF453A;
+}
+
+.statZap {
+  color: var(--kaelo-lime, #C7FF35);
+}
+
+.statShield {
+  color: #A982FF;
+}
+
+.cardFooter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 12px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 10px;
+}
+
+.referralLinkPreview {
+  font-family: monospace;
+  color: var(--kaelo-lime, #C7FF35);
+  font-weight: 700;
+}
+
+.cardPerkNote {
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.actionButtons {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.primaryShareBtn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 13px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 900;
+  border: none;
+  background: var(--kaelo-lime, #C7FF35);
+  color: #111111;
+  cursor: pointer;
+  transition: transform 0.15s ease;
+}
+
+.primaryShareBtn:hover {
+  transform: scale(1.02);
+}
+
+.secondaryRow {
+  display: flex;
+  gap: 8px;
+}
+
+.secondaryBtn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 10px 8px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 800;
+  border: 1px solid var(--border-subtle, rgba(0, 0, 0, 0.1));
+  background: var(--surface-card, #FFFFFF);
+  color: var(--text-primary, #111111);
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.secondaryBtn:hover {
+  background: var(--surface-hover, #F0F0F2);
+}
+
+[data-theme="dark"] .secondaryBtn {
+  background: #1C241C;
+  border-color: rgba(255, 255, 255, 0.15);
+  color: #FFFFFF;
+}
+
+[data-theme="night"] .secondaryBtn {
+  background: #271C4F;
+  border-color: rgba(196, 181, 253, 0.25);
+  color: #FFFFFF;
+}
+
+.referralMeta {
+  font-size: 11px;
+  color: var(--text-muted, #8E8E93);
+  text-align: center;
+  padding: 2px 8px;
+}

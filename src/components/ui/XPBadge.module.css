@@ -1,0 +1,27 @@
+.xpBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background-color: var(--kaelo-lime, #C7FF35);
+  color: #111111 !important;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  box-shadow: 0 0 12px rgba(199, 255, 53, 0.4);
+  animation: glow 2s infinite alternate;
+}
+
+.icon {
+  fill: currentColor;
+}
+
+@keyframes glow {
+  from {
+    box-shadow: 0 0 8px rgba(199, 255, 53, 0.3);
+  }
+  to {
+    box-shadow: 0 0 16px rgba(199, 255, 53, 0.6);
+  }
+}

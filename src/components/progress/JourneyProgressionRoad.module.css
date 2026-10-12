@@ -1,0 +1,1146 @@
+/* ==========================================================
+   THE EXECUTION ROAD - GAMIFIED PROGRESSION COMPONENT
+   Supports Light Mode, Night Mode (Indigo), and Dark Mode (Obsidian OLED)
+   ========================================================== */
+
+.container {
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-card, #FFFFFF);
+  border: 1.5px solid var(--border-color, #E8E8E3);
+  border-radius: var(--radius-xl, 24px);
+  padding: 20px 16px 28px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--card-shadow, 0 4px 20px rgba(0, 0, 0, 0.04));
+  margin-bottom: 24px;
+}
+
+/* ----------------------------------------------------------
+   Gamified Top Bar (HUD)
+   ---------------------------------------------------------- */
+.gameHud {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--bg-card-subtle, #F7F7F4);
+  border-radius: 18px;
+  padding: 10px 14px;
+  border: 1px solid var(--border-color, #E8E8E3);
+  margin-bottom: 20px;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.levelBadge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--kaelo-lime, #C7FF35);
+  color: #0A0D0A;
+  font-size: 11px;
+  font-weight: 800;
+  padding: 4px 10px;
+  border-radius: 20px;
+  border: 1.5px solid #111111;
+  box-shadow: 0 2px 0 #111111;
+}
+
+.levelDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #0A0D0A;
+}
+
+.hudStat {
+  display: flex;
+  flex-direction: column;
+}
+
+.hudLabel {
+  font-size: 9px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--kaelo-gray-500, #888888);
+  letter-spacing: 0.05em;
+}
+
+.hudVal {
+  font-size: 13px;
+  font-weight: 800;
+  color: var(--text-primary, #111111);
+}
+
+.goalsCrushedVal {
+  color: var(--kaelo-lime-dark, #8EB822);
+}
+
+.boostPill {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: #111111;
+  color: var(--kaelo-lime, #C7FF35);
+  font-size: 10px;
+  font-weight: 800;
+  padding: 5px 10px;
+  border-radius: 12px;
+}
+
+.boostIcon {
+  color: #C7FF35;
+  fill: #C7FF35;
+}
+
+/* ----------------------------------------------------------
+   Title Area & Stage Badge
+   ---------------------------------------------------------- */
+.roadTitleArea {
+  margin-bottom: 12px;
+  padding: 0 4px;
+}
+
+.roadTitleHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.roadTitle {
+  font-size: 16px;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  color: var(--text-primary, #111111);
+  margin: 0;
+}
+
+.stageBadge {
+  font-size: 11px;
+  font-weight: 800;
+  color: var(--text-primary, #111111);
+  background: var(--bg-card-subtle, #F1F1ED);
+  border: 1px solid var(--border-color, #E8E8E3);
+  padding: 3px 8px;
+  border-radius: 8px;
+}
+
+.roadSubtitle {
+  font-size: 12px;
+  color: var(--text-muted, #71717A);
+  margin-top: 4px;
+  line-height: 1.4;
+}
+
+/* ----------------------------------------------------------
+   Road Canvas & Curving Highway SVG
+   ---------------------------------------------------------- */
+.roadCanvas {
+  position: relative;
+  height: 620px;
+  width: 100%;
+  margin: 12px 0 0;
+}
+
+.pathSvg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.pathAura {
+  stroke: rgba(199, 255, 53, 0.35);
+  stroke-width: 26px;
+  transition: stroke 0.3s ease;
+}
+
+.pathCore {
+  stroke: rgba(199, 255, 53, 0.7);
+  stroke-width: 16px;
+  transition: stroke 0.3s ease;
+}
+
+.pathCenterDashed {
+  stroke: #111111;
+  stroke-width: 2.5px;
+  stroke-dasharray: 6 8;
+  transition: stroke 0.3s ease;
+}
+
+/* ----------------------------------------------------------
+   Stepping Stones Grid & Nodes
+   ---------------------------------------------------------- */
+.stonesGrid {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.stoneNode {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  z-index: 5;
+  transform: translateX(-50%);
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.stoneNode:hover {
+  transform: translateX(-50%) translateY(-4px) scale(1.05);
+}
+
+.stoneNode:active {
+  transform: translateX(-50%) translateY(2px) scale(0.97);
+}
+
+/* ----------------------------------------------------------
+   3D Tactile Isometric Platforms
+   ---------------------------------------------------------- */
+.platform {
+  width: clamp(52px, 14vw, 60px);
+  height: clamp(48px, 12vw, 54px);
+  border-radius: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid var(--border-strong, #111111);
+  box-shadow: 0 6px 0 var(--border-strong, #111111), 0 8px 14px rgba(0, 0, 0, 0.1);
+  position: relative;
+  background: var(--bg-card, #FFFFFF);
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.platformDone {
+  background: var(--kaelo-lime, #C7FF35);
+  border-color: #111111;
+  box-shadow: 0 6px 0 #111111, 0 8px 14px rgba(0, 0, 0, 0.1);
+}
+
+.platformCurrent {
+  width: clamp(60px, 16vw, 68px);
+  height: clamp(54px, 14vw, 60px);
+  background: var(--kaelo-lime, #C7FF35);
+  box-shadow: 0 8px 0 #111111, 0 12px 24px rgba(199, 255, 53, 0.5);
+  border: 3px solid #111111;
+}
+
+.platformLandmark {
+  background: #E8FFF0;
+  border-color: #10B981;
+  box-shadow: 0 6px 0 #059669;
+}
+
+.platformMystery {
+  background: #FFD700;
+  border-color: #B45309;
+  box-shadow: 0 6px 0 #B45309;
+}
+
+.platformGift {
+  background: #A982FF;
+  border-color: #5B21B6;
+  box-shadow: 0 6px 0 #5B21B6;
+}
+
+.platformLocked {
+  background: var(--bg-card-subtle, #F1F1ED);
+  box-shadow: 0 5px 0 var(--border-color, #D8D8D2);
+  border-color: var(--border-color, #D8D8D2);
+}
+
+.currentMascotWrapper {
+  margin-bottom: -10px;
+  z-index: 10;
+}
+
+.currentPulse {
+  position: absolute;
+  inset: -6px;
+  border-radius: 22px;
+  border: 2px solid var(--kaelo-lime, #C7FF35);
+  animation: pulsePath 2s infinite ease-in-out;
+  pointer-events: none;
+}
+
+@keyframes pulsePath {
+  0%, 100% { transform: scale(1); opacity: 0.85; }
+  50% { transform: scale(1.1); opacity: 0; }
+}
+
+/* ----------------------------------------------------------
+   Platform Icons & Inner Elements
+   ---------------------------------------------------------- */
+.iconCheck {
+  color: #0A0D0A;
+}
+
+.iconCurrent {
+  color: #0A0D0A;
+}
+
+.iconSprout {
+  color: #10B981;
+}
+
+.iconFlame {
+  color: #FF5E54;
+}
+
+.iconGift {
+  color: #111111;
+}
+
+.iconTrophy {
+  color: #B45309;
+}
+
+.mysteryMark {
+  font-size: 24px;
+  font-weight: 900;
+  color: #111111;
+}
+
+.platformXpText {
+  font-size: 13px;
+  font-weight: 800;
+  color: var(--text-primary, #111111);
+}
+
+/* ----------------------------------------------------------
+   Platform Labels
+   ---------------------------------------------------------- */
+.platformLabel {
+  font-size: 10px;
+  font-weight: 800;
+  color: var(--text-primary, #111111);
+  margin-top: 10px;
+  background: var(--bg-card, #FFFFFF);
+  padding: 3px 8px;
+  border-radius: 8px;
+  border: 1px solid var(--border-color, #D8D8D2);
+  white-space: nowrap;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.currentLabel {
+  background: #111111;
+  color: var(--kaelo-lime, #C7FF35);
+  border: 1px solid #111111;
+  font-weight: 900;
+}
+
+/* ----------------------------------------------------------
+   Coordinates on Canvas (S-Curve Winding Road)
+   ---------------------------------------------------------- */
+.posOrigin {
+  left: 19%;
+  bottom: 8%;
+}
+
+.posCenterBottom {
+  left: 45%;
+  bottom: 18%;
+}
+
+.posLeft1 {
+  left: 70%;
+  bottom: 29%;
+}
+
+.posRight1 {
+  left: 68%;
+  bottom: 41%;
+}
+
+.posCenter {
+  left: 36%;
+  bottom: 52%;
+}
+
+.posLeft2 {
+  left: 18%;
+  bottom: 64%;
+}
+
+.posRight2 {
+  left: 70%;
+  bottom: 76%;
+}
+
+.posTop {
+  left: 50%;
+  bottom: 88%;
+}
+
+/* ----------------------------------------------------------
+   Advance Action Button
+   ---------------------------------------------------------- */
+.advanceWrapper {
+  margin-top: 18px;
+  display: flex;
+  width: 100%;
+}
+
+.advanceBtn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: #FFFFFF;
+  border: 2px solid #111111;
+  border-radius: 16px;
+  padding: 13px;
+  font-size: 12px;
+  font-weight: 800;
+  color: #111111;
+  cursor: pointer;
+  box-shadow: 0 3px 0 #111111;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+}
+
+.advanceBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 0 #111111;
+}
+
+.advanceBtn:active {
+  transform: translateY(2px);
+  box-shadow: 0 1px 0 #111111;
+}
+
+.advanceSparkle {
+  color: #FF453A;
+}
+
+/* ----------------------------------------------------------
+   Milestone Detail Modal
+   ---------------------------------------------------------- */
+.modalOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 200;
+  padding: 24px;
+}
+
+.modalCard {
+  background: var(--bg-card-elevated, #FFFFFF);
+  border-radius: 24px;
+  padding: 24px;
+  width: 100%;
+  max-width: 320px;
+  border: 2px solid var(--border-strong, #111111);
+  box-shadow: 0 10px 0 var(--border-strong, #111111);
+  position: relative;
+}
+
+.closeBtn {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: var(--bg-card-subtle, #F1F1ED);
+  color: var(--text-primary, #111111);
+  border: none;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.closeBtn:hover {
+  opacity: 0.8;
+}
+
+.modalHeader {
+  margin-bottom: 8px;
+}
+
+.modalStatus {
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  color: var(--kaelo-purple-dark, #7C3AED);
+  text-transform: uppercase;
+}
+
+.modalTitle {
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--text-primary, #111111);
+  margin: 4px 0 8px;
+}
+
+.modalDesc {
+  font-size: 13px;
+  color: var(--text-secondary, #444444);
+  line-height: 1.45;
+  margin-bottom: 16px;
+}
+
+.modalReqBox {
+  background: var(--bg-card-muted, #E8E8E3);
+  border: 1px solid var(--border-color, #E8E8E3);
+  border-radius: 14px;
+  padding: 12px;
+  margin-bottom: 14px;
+}
+
+.modalReqBoxDone {
+  background: var(--bg-card-subtle, #F7F7F4);
+}
+
+.modalReqLabel {
+  font-size: 10px;
+  font-weight: 800;
+  color: var(--text-muted, #777777);
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+.modalReqText {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text-primary, #111111);
+  line-height: 1.35;
+}
+
+.rewardPill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--kaelo-lime, #C7FF35);
+  color: #0A0D0A;
+  padding: 6px 12px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 800;
+  border: 1px solid #111111;
+  margin-bottom: 16px;
+}
+
+.rewardIcon {
+  color: #0A0D0A;
+}
+
+.modalActions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.modalQuestBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: var(--accent-lime, #C7FF35);
+  color: #0A0D0A;
+  border: 2px solid #111111;
+  border-radius: 16px;
+  padding: 12px;
+  font-size: 13px;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: 0 3px 0 #111111;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.modalQuestBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 0 #111111;
+}
+
+.modalOkBtn {
+  width: 100%;
+  background: var(--text-primary, #111111);
+  color: var(--bg-card, #FFFFFF);
+  border: none;
+  border-radius: 14px;
+  padding: 12px;
+  font-weight: 800;
+  font-size: 13px;
+  cursor: pointer;
+  box-shadow: 0 3px 0 rgba(0, 0, 0, 0.2);
+  transition: opacity 0.2s ease;
+}
+
+.modalOkBtn:hover {
+  opacity: 0.9;
+}
+
+/* ==========================================================
+   DARK MOOD OVERRIDES (Stealth OLED Obsidian & High-Contrast Neon)
+   Inspired by Reference Screenshots (Duolingo / Gamification)
+   ========================================================== */
+:global([data-theme="dark"]) .container {
+  background: radial-gradient(circle at 50% 25%, rgba(199, 255, 53, 0.08) 0%, transparent 65%),
+              radial-gradient(circle at 15% 85%, rgba(52, 211, 153, 0.06) 0%, transparent 50%),
+              linear-gradient(165deg, #131813 0%, #0A0D0A 100%);
+  border: 1.5px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+:global([data-theme="dark"]) .gameHud {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%);
+  border-color: rgba(255, 255, 255, 0.12);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+}
+
+:global([data-theme="dark"]) .levelBadge {
+  background: linear-gradient(180deg, #D4FF4D 0%, #B2F017 100%);
+  color: #0A0D0A;
+  border-color: #000000;
+  box-shadow: 0 2px 0 #6C990A, 0 0 12px rgba(199, 255, 53, 0.4);
+}
+
+:global([data-theme="dark"]) .levelDot {
+  background: #0A0D0A;
+}
+
+:global([data-theme="dark"]) .hudLabel {
+  color: #9CA3AF;
+}
+
+:global([data-theme="dark"]) .hudVal {
+  color: #FFFFFF;
+}
+
+:global([data-theme="dark"]) .goalsCrushedVal {
+  color: #C7FF35;
+  text-shadow: 0 0 8px rgba(199, 255, 53, 0.4);
+}
+
+:global([data-theme="dark"]) .boostPill {
+  background: rgba(199, 255, 53, 0.14);
+  color: #C7FF35;
+  border: 1px solid rgba(199, 255, 53, 0.4);
+  box-shadow: 0 0 12px rgba(199, 255, 53, 0.25);
+}
+
+:global([data-theme="dark"]) .roadTitle {
+  color: #FFFFFF;
+}
+
+:global([data-theme="dark"]) .roadSubtitle {
+  color: #9CA3AF;
+}
+
+:global([data-theme="dark"]) .stageBadge {
+  background: rgba(199, 255, 53, 0.12);
+  border-color: rgba(199, 255, 53, 0.35);
+  color: #C7FF35;
+}
+
+/* Dark Mode SVG Highway Path */
+:global([data-theme="dark"]) .pathAura {
+  stroke: rgba(199, 255, 53, 0.22);
+  stroke-width: 32px;
+  filter: drop-shadow(0 0 16px rgba(199, 255, 53, 0.5));
+}
+
+:global([data-theme="dark"]) .pathCore {
+  stroke: #162016;
+  stroke-width: 18px;
+  stroke-opacity: 0.95;
+}
+
+:global([data-theme="dark"]) .pathCenterDashed {
+  stroke: #C7FF35;
+  stroke-width: 3px;
+  filter: drop-shadow(0 0 6px rgba(199, 255, 53, 0.95));
+}
+
+/* Dark Mode Stepping Stones */
+:global([data-theme="dark"]) .platform {
+  background: linear-gradient(180deg, #1C241C 0%, #121812 100%);
+  border: 2px solid rgba(255, 255, 255, 0.16);
+  box-shadow: 0 6px 0 #070B07, 0 10px 20px rgba(0, 0, 0, 0.6);
+  color: #FFFFFF;
+}
+
+:global([data-theme="dark"]) .platformDone {
+  background: linear-gradient(180deg, #D4FF4D 0%, #B2F017 100%);
+  border: 2px solid #080D08;
+  box-shadow: 0 6px 0 #6C990A, 0 8px 18px rgba(199, 255, 53, 0.35);
+  color: #0A0D0A;
+}
+
+:global([data-theme="dark"]) .platformCurrent {
+  background: linear-gradient(180deg, #E2FF70 0%, #C4FF26 100%);
+  border: 3px solid #080D08;
+  box-shadow: 0 8px 0 #6C990A, 0 0 28px rgba(199, 255, 53, 0.75), 0 14px 28px rgba(0, 0, 0, 0.75);
+  color: #0A0D0A;
+}
+
+:global([data-theme="dark"]) .currentPulse {
+  border: 2.5px solid #C7FF35;
+  box-shadow: 0 0 22px rgba(199, 255, 53, 0.85);
+}
+
+:global([data-theme="dark"]) .platformLandmark {
+  background: linear-gradient(180deg, #113B25 0%, #082315 100%);
+  border: 2px solid #34D399;
+  box-shadow: 0 6px 0 #041B10, 0 8px 18px rgba(52, 211, 153, 0.35);
+  color: #34D399;
+}
+
+:global([data-theme="dark"]) .platformMystery {
+  background: linear-gradient(180deg, #3A2B04 0%, #1F1600 100%);
+  border: 2px solid #F59E0B;
+  box-shadow: 0 6px 0 #120C00, 0 8px 18px rgba(245, 158, 11, 0.35);
+  color: #FBBF24;
+}
+
+:global([data-theme="dark"]) .mysteryMark {
+  color: #FBBF24;
+  text-shadow: 0 0 12px rgba(245, 158, 11, 0.7);
+}
+
+:global([data-theme="dark"]) .platformGift {
+  background: linear-gradient(180deg, #331A5E 0%, #1B0C36 100%);
+  border: 2px solid #A855F7;
+  box-shadow: 0 6px 0 #0E0520, 0 8px 18px rgba(168, 85, 247, 0.35);
+  color: #D8B4FE;
+}
+
+:global([data-theme="dark"]) .iconGift {
+  color: #D8B4FE;
+}
+
+:global([data-theme="dark"]) .iconTrophy {
+  color: #FBBF24;
+  filter: drop-shadow(0 0 8px rgba(251, 191, 36, 0.6));
+}
+
+:global([data-theme="dark"]) .platformLocked {
+  background: linear-gradient(180deg, #171E17 0%, #0E130E 100%);
+  border: 2px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 5px 0 #070A07, inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  color: #A1A1AA;
+}
+
+:global([data-theme="dark"]) .platformXpText {
+  color: #E4E4E7;
+}
+
+:global([data-theme="dark"]) .platformLabel {
+  background: #141B14;
+  color: #E4E4E7;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+:global([data-theme="dark"]) .currentLabel {
+  background: #080D08;
+  color: #C7FF35;
+  border: 1.5px solid #C7FF35;
+  box-shadow: 0 0 14px rgba(199, 255, 53, 0.55), 0 3px 8px rgba(0, 0, 0, 0.6);
+  font-weight: 900;
+}
+
+/* Dark Mode Advance Simulation Button */
+:global([data-theme="dark"]) .advanceBtn {
+  background: linear-gradient(180deg, #1D261D 0%, #121812 100%);
+  border: 2px solid rgba(199, 255, 53, 0.45);
+  color: #FFFFFF;
+  box-shadow: 0 4px 0 #080D08, 0 6px 18px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+:global([data-theme="dark"]) .advanceBtn:hover {
+  border-color: #C7FF35;
+  box-shadow: 0 4px 0 #080D08, 0 0 18px rgba(199, 255, 53, 0.35);
+}
+
+:global([data-theme="dark"]) .advanceBtn:active {
+  transform: translateY(2px);
+  box-shadow: 0 1px 0 #080D08;
+}
+
+:global([data-theme="dark"]) .advanceSparkle {
+  color: #FF5E54;
+  filter: drop-shadow(0 0 6px rgba(255, 94, 84, 0.6));
+}
+
+/* Dark Mode Modal Details */
+:global([data-theme="dark"]) .modalOverlay {
+  background: rgba(0, 0, 0, 0.78);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+:global([data-theme="dark"]) .modalCard {
+  background: linear-gradient(170deg, #1A241A 0%, #0F150F 100%);
+  border: 2px solid rgba(199, 255, 53, 0.4);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.85), 0 0 30px rgba(199, 255, 53, 0.15);
+  color: #FFFFFF;
+}
+
+:global([data-theme="dark"]) .closeBtn {
+  background: rgba(255, 255, 255, 0.08);
+  color: #FFFFFF;
+}
+
+:global([data-theme="dark"]) .modalStatus {
+  color: #C7FF35;
+  text-shadow: 0 0 10px rgba(199, 255, 53, 0.4);
+}
+
+:global([data-theme="dark"]) .modalTitle {
+  color: #FFFFFF;
+}
+
+:global([data-theme="dark"]) .modalDesc {
+  color: #D4D4D8;
+}
+
+:global([data-theme="dark"]) .modalReqBox {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+:global([data-theme="dark"]) .modalReqBoxDone {
+  background: rgba(199, 255, 53, 0.08);
+  border-color: rgba(199, 255, 53, 0.3);
+}
+
+:global([data-theme="dark"]) .modalReqLabel {
+  color: #9CA3AF;
+}
+
+:global([data-theme="dark"]) .modalReqText {
+  color: #FFFFFF;
+}
+
+:global([data-theme="dark"]) .rewardPill {
+  background: rgba(199, 255, 53, 0.15);
+  color: #C7FF35;
+  border: 1.5px solid rgba(199, 255, 53, 0.5);
+  box-shadow: 0 0 12px rgba(199, 255, 53, 0.25);
+}
+
+:global([data-theme="dark"]) .rewardIcon {
+  color: #C7FF35;
+}
+
+:global([data-theme="dark"]) .modalQuestBtn {
+  background: linear-gradient(180deg, #D4FF4D 0%, #B2F017 100%);
+  color: #0A0D0A;
+  border: 2px solid #000000;
+  box-shadow: 0 3px 0 #6C990A, 0 4px 16px rgba(199, 255, 53, 0.4);
+}
+
+:global([data-theme="dark"]) .modalOkBtn {
+  background: rgba(255, 255, 255, 0.08);
+  color: #FFFFFF;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+:global([data-theme="dark"]) .modalOkBtn:hover {
+  background: rgba(255, 255, 255, 0.14);
+}
+
+/* ==========================================================
+   NIGHT MOOD OVERRIDES (Celestial Midnight Indigo & Starry Glow)
+   ========================================================== */
+:global([data-theme="night"]) .container {
+  background: radial-gradient(circle at 50% 20%, rgba(169, 130, 255, 0.12) 0%, transparent 65%),
+              radial-gradient(circle at 80% 85%, rgba(199, 255, 53, 0.06) 0%, transparent 50%),
+              linear-gradient(165deg, #1A1336 0%, #0E0922 100%);
+  border: 1.5px solid rgba(169, 130, 255, 0.3);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.65), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+:global([data-theme="night"]) .gameHud {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(169, 130, 255, 0.25);
+}
+
+:global([data-theme="night"]) .levelBadge {
+  background: linear-gradient(180deg, #D4FF4D 0%, #B2F017 100%);
+  color: #0A0D0A;
+  border-color: #000000;
+  box-shadow: 0 2px 0 #6C990A, 0 0 12px rgba(199, 255, 53, 0.4);
+}
+
+:global([data-theme="night"]) .levelDot {
+  background: #0A0D0A;
+}
+
+:global([data-theme="night"]) .hudLabel {
+  color: #DDD6FE;
+}
+
+:global([data-theme="night"]) .hudVal {
+  color: #FFFFFF;
+}
+
+:global([data-theme="night"]) .goalsCrushedVal {
+  color: #C7FF35;
+  text-shadow: 0 0 8px rgba(199, 255, 53, 0.4);
+}
+
+:global([data-theme="night"]) .boostPill {
+  background: rgba(169, 130, 255, 0.18);
+  color: #DDD6FE;
+  border: 1px solid rgba(169, 130, 255, 0.45);
+  box-shadow: 0 0 12px rgba(169, 130, 255, 0.25);
+}
+
+:global([data-theme="night"]) .roadTitle {
+  color: #FFFFFF;
+}
+
+:global([data-theme="night"]) .roadSubtitle {
+  color: #DDD6FE;
+}
+
+:global([data-theme="night"]) .stageBadge {
+  background: rgba(169, 130, 255, 0.15);
+  border-color: rgba(169, 130, 255, 0.35);
+  color: #C4B0FF;
+}
+
+/* Night Mode SVG Highway Path */
+:global([data-theme="night"]) .pathAura {
+  stroke: rgba(169, 130, 255, 0.22);
+  stroke-width: 32px;
+  filter: drop-shadow(0 0 16px rgba(169, 130, 255, 0.5));
+}
+
+:global([data-theme="night"]) .pathCore {
+  stroke: #1E153D;
+  stroke-width: 18px;
+  stroke-opacity: 0.95;
+}
+
+:global([data-theme="night"]) .pathCenterDashed {
+  stroke: #C4B0FF;
+  stroke-width: 3px;
+  filter: drop-shadow(0 0 6px rgba(169, 130, 255, 0.95));
+}
+
+/* Night Mode Stepping Stones */
+:global([data-theme="night"]) .platform {
+  background: linear-gradient(180deg, #241A48 0%, #150E30 100%);
+  border: 2px solid rgba(169, 130, 255, 0.25);
+  box-shadow: 0 6px 0 #0C061E, 0 10px 20px rgba(0, 0, 0, 0.5);
+  color: #FFFFFF;
+}
+
+:global([data-theme="night"]) .platformDone {
+  background: linear-gradient(180deg, #D4FF4D 0%, #B2F017 100%);
+  border: 2px solid #080D08;
+  box-shadow: 0 6px 0 #6C990A, 0 8px 18px rgba(199, 255, 53, 0.35);
+  color: #0A0D0A;
+}
+
+:global([data-theme="night"]) .platformCurrent {
+  background: linear-gradient(180deg, #E2FF70 0%, #C4FF26 100%);
+  border: 3px solid #080D08;
+  box-shadow: 0 8px 0 #6C990A, 0 0 28px rgba(199, 255, 53, 0.75), 0 14px 28px rgba(0, 0, 0, 0.75);
+  color: #0A0D0A;
+}
+
+:global([data-theme="night"]) .currentPulse {
+  border: 2.5px solid #C7FF35;
+  box-shadow: 0 0 22px rgba(199, 255, 53, 0.85);
+}
+
+:global([data-theme="night"]) .platformLandmark {
+  background: linear-gradient(180deg, #113B25 0%, #082315 100%);
+  border: 2px solid #34D399;
+  box-shadow: 0 6px 0 #041B10, 0 8px 18px rgba(52, 211, 153, 0.35);
+  color: #34D399;
+}
+
+:global([data-theme="night"]) .platformMystery {
+  background: linear-gradient(180deg, #3A2B04 0%, #1F1600 100%);
+  border: 2px solid #F59E0B;
+  box-shadow: 0 6px 0 #120C00, 0 8px 18px rgba(245, 158, 11, 0.35);
+  color: #FBBF24;
+}
+
+:global([data-theme="night"]) .platformGift {
+  background: linear-gradient(180deg, #331A5E 0%, #1B0C36 100%);
+  border: 2px solid #C4B0FF;
+  box-shadow: 0 6px 0 #0E0520, 0 8px 18px rgba(168, 85, 247, 0.35);
+  color: #DDD6FE;
+}
+
+:global([data-theme="night"]) .iconGift {
+  color: #DDD6FE;
+}
+
+:global([data-theme="night"]) .iconTrophy {
+  color: #FBBF24;
+  filter: drop-shadow(0 0 8px rgba(251, 191, 36, 0.6));
+}
+
+:global([data-theme="night"]) .platformLocked {
+  background: linear-gradient(180deg, #1C143B 0%, #100A26 100%);
+  border: 2px solid rgba(169, 130, 255, 0.2);
+  box-shadow: 0 5px 0 #080417, inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  color: #C4B5FD;
+}
+
+:global([data-theme="night"]) .platformXpText {
+  color: #DDD6FE;
+}
+
+:global([data-theme="night"]) .platformLabel {
+  background: #241A4C;
+  color: #F5F3FF;
+  border: 1px solid rgba(169, 130, 255, 0.3);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+:global([data-theme="night"]) .currentLabel {
+  background: #100A26;
+  color: #C7FF35;
+  border: 1.5px solid #C7FF35;
+  box-shadow: 0 0 14px rgba(199, 255, 53, 0.55), 0 3px 8px rgba(0, 0, 0, 0.6);
+  font-weight: 900;
+}
+
+/* Night Mode Advance Simulation Button */
+:global([data-theme="night"]) .advanceBtn {
+  background: linear-gradient(180deg, #251B4E 0%, #150E32 100%);
+  border: 2px solid rgba(169, 130, 255, 0.45);
+  color: #FFFFFF;
+  box-shadow: 0 4px 0 #0A051C, 0 6px 18px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+:global([data-theme="night"]) .advanceBtn:hover {
+  border-color: #C4B0FF;
+  box-shadow: 0 4px 0 #0A051C, 0 0 18px rgba(169, 130, 255, 0.35);
+}
+
+:global([data-theme="night"]) .advanceBtn:active {
+  transform: translateY(2px);
+  box-shadow: 0 1px 0 #0A051C;
+}
+
+:global([data-theme="night"]) .advanceSparkle {
+  color: #FF5E54;
+}
+
+/* Night Mode Modal Details */
+:global([data-theme="night"]) .modalOverlay {
+  background: rgba(8, 4, 20, 0.78);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+:global([data-theme="night"]) .modalCard {
+  background: linear-gradient(170deg, #241A4E 0%, #120D2C 100%);
+  border: 2px solid rgba(169, 130, 255, 0.45);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.75), 0 0 30px rgba(169, 130, 255, 0.15);
+  color: #FFFFFF;
+}
+
+:global([data-theme="night"]) .closeBtn {
+  background: rgba(255, 255, 255, 0.08);
+  color: #FFFFFF;
+}
+
+:global([data-theme="night"]) .modalStatus {
+  color: #C4B0FF;
+  text-shadow: 0 0 10px rgba(169, 130, 255, 0.4);
+}
+
+:global([data-theme="night"]) .modalTitle {
+  color: #FFFFFF;
+}
+
+:global([data-theme="night"]) .modalDesc {
+  color: #EDE9FE;
+}
+
+:global([data-theme="night"]) .modalReqBox {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(169, 130, 255, 0.25);
+}
+
+:global([data-theme="night"]) .modalReqBoxDone {
+  background: rgba(169, 130, 255, 0.1);
+  border-color: rgba(169, 130, 255, 0.35);
+}
+
+:global([data-theme="night"]) .modalReqLabel {
+  color: #C4B5FD;
+}
+
+:global([data-theme="night"]) .modalReqText {
+  color: #FFFFFF;
+}
+
+:global([data-theme="night"]) .rewardPill {
+  background: rgba(169, 130, 255, 0.18);
+  color: #DDD6FE;
+  border: 1.5px solid rgba(169, 130, 255, 0.5);
+  box-shadow: 0 0 12px rgba(169, 130, 255, 0.25);
+}
+
+:global([data-theme="night"]) .rewardIcon {
+  color: #DDD6FE;
+}
+
+:global([data-theme="night"]) .modalQuestBtn {
+  background: linear-gradient(180deg, #D4FF4D 0%, #B2F017 100%);
+  color: #0A0D0A;
+  border: 2px solid #000000;
+  box-shadow: 0 3px 0 #6C990A, 0 4px 16px rgba(199, 255, 53, 0.4);
+}
+
+:global([data-theme="night"]) .modalOkBtn {
+  background: rgba(255, 255, 255, 0.08);
+  color: #FFFFFF;
+  border: 1px solid rgba(169, 130, 255, 0.3);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+:global([data-theme="night"]) .modalOkBtn:hover {
+  background: rgba(255, 255, 255, 0.14);
+}
+
+/* ----------------------------------------------------------
+   Small Screen Optimizations
+   ---------------------------------------------------------- */
+@media (max-width: 360px) {
+  .container {
+    padding: 16px 10px 24px;
+  }
+  .gameHud {
+    padding: 8px 10px;
+    gap: 6px;
+  }
+  .hudVal {
+    font-size: 11px;
+  }
+  .platform {
+    width: 48px;
+    height: 44px;
+  }
+  .platformCurrent {
+    width: 56px;
+    height: 50px;
+  }
+}

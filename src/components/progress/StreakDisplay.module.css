@@ -1,0 +1,199 @@
+.container {
+  background: var(--bg-card, #141814);
+  border-radius: clamp(20px, 4.5vw, 24px);
+  padding: clamp(20px, 3.5vw, 24px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid var(--border-color, rgba(255, 255, 255, 0.08));
+  box-shadow: var(--card-shadow, 0 8px 32px rgba(0, 0, 0, 0.6));
+  position: relative;
+  overflow: hidden;
+  transition: all 0.25s ease;
+}
+
+:global([data-theme="dark"]) .container {
+  background: linear-gradient(165deg, #151A15 0%, #0E120E 100%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 10px 32px rgba(0, 0, 0, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+:global([data-theme="night"]) .container {
+  background: linear-gradient(165deg, #1D153B 0%, #120C26 100%);
+  border: 1px solid rgba(169, 130, 255, 0.25);
+  box-shadow: 0 10px 32px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.glow {
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 220px;
+  height: 180px;
+  background: radial-gradient(circle, rgba(199, 255, 53, 0.18) 0%, rgba(52, 211, 153, 0.08) 50%, transparent 75%);
+  filter: blur(28px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.heroContent {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 20px;
+  z-index: 1;
+  width: 100%;
+}
+
+.flameWrapper {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  filter: drop-shadow(0 4px 14px rgba(255, 94, 94, 0.35));
+  animation: flameFloat 3s ease-in-out infinite;
+}
+
+@keyframes flameFloat {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-4px) scale(1.04); }
+}
+
+.streakNumberContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.streakNumber {
+  font-size: clamp(48px, 12vw, 64px);
+  font-weight: 900;
+  line-height: 0.95;
+  color: #FFFFFF;
+  letter-spacing: -0.04em;
+  text-shadow: 0 0 20px rgba(199, 255, 53, 0.25);
+}
+
+.streakLabelCol {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.daysText {
+  font-size: 15px;
+  font-weight: 900;
+  color: var(--accent-lime, #C7FF35);
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  text-shadow: 0 0 12px rgba(199, 255, 53, 0.4);
+}
+
+.streakSubtext {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--text-muted, #9CA3AF);
+}
+
+/* Track Section */
+.trackSection {
+  width: 100%;
+  background: var(--bg-card-subtle, rgba(255, 255, 255, 0.04));
+  border: 1px solid var(--border-color, rgba(255, 255, 255, 0.06));
+  border-radius: var(--radius-lg, 16px);
+  padding: 12px 14px;
+  margin-bottom: 14px;
+  z-index: 1;
+}
+
+.trackHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.trackLabel {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text-muted, #9CA3AF);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.trackCount {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--accent-lime, #C7FF35);
+}
+
+.dotsContainer {
+  display: flex;
+  gap: clamp(4px, 1.6vw, 8px);
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.dot {
+  width: clamp(10px, 2.6vw, 14px);
+  height: clamp(10px, 2.6vw, 14px);
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.08);
+  transition: all 0.25s ease;
+  flex-shrink: 0;
+}
+
+.dot.filled {
+  background-color: var(--accent-lime, #C7FF35);
+  box-shadow: 0 0 10px rgba(199, 255, 53, 0.6);
+}
+
+.dot.pulsing {
+  border: 2px solid var(--accent-lime, #C7FF35);
+  background-color: rgba(199, 255, 53, 0.2);
+  box-shadow: 0 0 12px rgba(199, 255, 53, 0.5);
+  animation: pulseDot 2s infinite;
+}
+
+@keyframes pulseDot {
+  0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(199, 255, 53, 0.6); }
+  70% { transform: scale(1.15); box-shadow: 0 0 0 6px rgba(199, 255, 53, 0); }
+  100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(199, 255, 53, 0); }
+}
+
+/* Milestone Pills Row */
+.milestoneRow {
+  display: flex;
+  gap: 8px;
+  width: 100%;
+  justify-content: space-between;
+  z-index: 1;
+}
+
+.milestonePill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--bg-card-subtle, rgba(255, 255, 255, 0.04));
+  border: 1px solid var(--border-color, rgba(255, 255, 255, 0.06));
+  padding: 6px 10px;
+  border-radius: var(--radius-full, 9999px);
+  font-size: 11px;
+  color: var(--text-secondary, #D4D4D8);
+  flex: 1;
+  justify-content: center;
+}
+
+.milestonePill strong {
+  color: #FFFFFF;
+}
+
+.milestoneIconOrange {
+  color: var(--accent-orange, #FF5E54);
+}
+
+.milestoneIconLime {
+  color: var(--accent-lime, #C7FF35);
+}

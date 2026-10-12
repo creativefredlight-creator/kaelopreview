@@ -1,0 +1,131 @@
+.container {
+  padding: clamp(16px, 3.5vw, 24px);
+  padding-bottom: calc(84px + env(safe-area-inset-bottom, 0px));
+  height: 100%;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.title {
+  font-size: clamp(22px, 6vw, 28px);
+  font-weight: 800;
+  color: var(--text-primary, #111111);
+}
+
+.count {
+  color: var(--text-muted, #A1A1AA);
+  font-size: 16px;
+  font-weight: 600;
+  margin-left: 8px;
+}
+
+.addButton {
+  background: var(--accent-lime, #C7FF35);
+  color: #111111;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(199, 255, 53, 0.35);
+  transition: transform 0.2s ease;
+}
+
+.addButton:hover {
+  transform: scale(1.08);
+}
+
+.tabs {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 24px;
+}
+
+.tab {
+  padding: 8px 18px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 700;
+  background: var(--bg-card-subtle, #F1F1ED);
+  color: var(--text-secondary, #111111);
+  border: 1px solid var(--border-color, transparent);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.tabActive {
+  background: var(--text-primary, #111111);
+  color: var(--bg-card, #FFFFFF);
+  border-color: var(--text-primary, #111111);
+}
+
+:global([data-theme="dark"]) .tabActive,
+:global([data-theme="night"]) .tabActive {
+  background: var(--accent-lime, #C7FF35);
+  color: #0A0D0A;
+  border-color: var(--accent-lime, #C7FF35);
+  box-shadow: 0 0 12px rgba(199, 255, 53, 0.3);
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.emptyState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 48px 24px;
+  background: var(--bg-card, #F1F1ED);
+  border: 1px dashed var(--border-color, #d8d8d2);
+  border-radius: 24px;
+  margin-top: 32px;
+  box-shadow: var(--card-shadow);
+}
+
+.emptyTitle {
+  font-size: 20px;
+  font-weight: 800;
+  margin-bottom: 12px;
+  color: var(--text-primary, #111111);
+}
+
+.emptyDesc {
+  color: var(--text-muted, #71717A);
+  font-size: 14px;
+  line-height: 1.5;
+  margin-bottom: 24px;
+  max-width: 300px;
+}
+
+.createGoalBtn {
+  background: var(--accent-lime, #C7FF35);
+  color: #0A0D0A;
+  padding: 12px 28px;
+  border-radius: 16px;
+  border: 1px solid rgba(199, 255, 53, 0.4);
+  font-weight: 800;
+  font-size: 14px;
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(199, 255, 53, 0.35);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.createGoalBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(199, 255, 53, 0.45);
+}

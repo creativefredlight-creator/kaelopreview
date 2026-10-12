@@ -1,0 +1,124 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.avatarContainer {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background-color: rgba(199, 255, 53, 0.2);
+  border: 2px solid var(--border-strong, #111111);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32px;
+  font-weight: 800;
+  color: var(--text-primary, #111111);
+  transition: all 0.25s ease;
+}
+
+:global([data-theme="dark"]) .avatar {
+  background-color: rgba(199, 255, 53, 0.12);
+  color: var(--accent-lime, #C7FF35);
+  border: 2px dashed var(--accent-lime, #C7FF35);
+  box-shadow: 0 0 20px rgba(199, 255, 53, 0.35);
+}
+
+:global([data-theme="night"]) .avatar {
+  background-color: rgba(169, 130, 255, 0.2);
+  color: var(--accent-purple, #C4B0FF);
+  border: 2px dashed var(--accent-purple, #C4B0FF);
+  box-shadow: 0 0 20px rgba(169, 130, 255, 0.35);
+}
+
+.levelBadgeWrapper {
+  position: absolute;
+  bottom: -10px;
+}
+
+.userInfo {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.name {
+  font-size: clamp(20px, 5.5vw, 24px);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin: 0;
+  color: var(--text-primary, #111111);
+}
+
+.identity {
+  font-size: clamp(12.5px, 3.4vw, 14px);
+  color: var(--text-muted, #71717A);
+  margin: 0;
+  max-width: 280px;
+  line-height: 1.4;
+}
+
+.statsRow {
+  display: flex;
+  align-items: center;
+  background-color: var(--bg-card, #FFFFFF);
+  border-radius: 20px;
+  padding: clamp(12px, 2.5vh, 16px) clamp(12px, 3.5vw, 24px);
+  gap: clamp(12px, 3.5vw, 24px);
+  width: 100%;
+  justify-content: center;
+  border: 1px solid var(--border-color, #E8E8E3);
+  box-shadow: var(--card-shadow, 0 2px 10px rgba(0, 0, 0, 0.03));
+  transition: all 0.25s ease;
+}
+
+:global([data-theme="dark"]) .statsRow {
+  background: linear-gradient(165deg, #151A15 0%, #0E120E 100%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+}
+
+:global([data-theme="night"]) .statsRow {
+  background: linear-gradient(165deg, #1D153B 0%, #120C26 100%);
+  border: 1px solid rgba(169, 130, 255, 0.25);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+}
+
+.statItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.statValue {
+  font-size: clamp(16px, 4.5vw, 20px);
+  font-weight: 800;
+  color: var(--text-primary, #111111);
+}
+
+.statLabel {
+  font-size: 10px;
+  text-transform: uppercase;
+  color: var(--text-muted, #A1A1AA);
+  letter-spacing: 0.05em;
+  font-weight: 700;
+}
+
+.divider {
+  width: 1px;
+  height: 24px;
+  background-color: var(--border-color, #E8E8E3);
+}

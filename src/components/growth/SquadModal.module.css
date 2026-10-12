@@ -1,0 +1,269 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 4px 0 16px;
+}
+
+.squadHeroCard {
+  background: var(--surface-card, #FFFFFF);
+  border: 1px solid var(--border-subtle, rgba(0, 0, 0, 0.08));
+  border-radius: var(--radius-xl, 24px);
+  padding: 18px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.03);
+}
+
+.squadTop {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.squadBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: var(--kaelo-lime-dark, #8EB81E);
+  background: rgba(199, 255, 53, 0.2);
+  padding: 3px 8px;
+  border-radius: 999px;
+  align-self: flex-start;
+}
+
+.squadName {
+  font-size: 18px;
+  font-weight: 900;
+  letter-spacing: -0.01em;
+  color: var(--text-primary, #111111);
+  margin: 0;
+}
+
+.squadMotto {
+  font-size: 12px;
+  color: var(--text-secondary, #6E6E73);
+  margin: 0;
+  font-style: italic;
+}
+
+.weeklyTargetBox {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  background: var(--surface-hover, #F5F5F7);
+  padding: 12px 14px;
+  border-radius: 14px;
+}
+
+.targetLabelRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 10px;
+  font-weight: 800;
+}
+
+.targetLabel {
+  color: var(--text-muted, #8E8E93);
+  letter-spacing: 0.05em;
+}
+
+.targetNum {
+  color: var(--text-primary, #111111);
+}
+
+.sectionHeader {
+  display: flex;
+  justify-content: space-between;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  color: var(--text-muted, #8E8E93);
+  padding: 0 6px;
+}
+
+.memberList {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.memberRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--surface-card, #FFFFFF);
+  border: 1px solid var(--border-subtle, rgba(0, 0, 0, 0.06));
+  border-radius: 14px;
+  padding: 10px 14px;
+  transition: all 0.15s ease;
+}
+
+.memberRowYou {
+  border-color: rgba(199, 255, 53, 0.5);
+  background: rgba(199, 255, 53, 0.04);
+}
+
+.memberLeft {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.avatarCircle {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: var(--surface-hover, #EAEAEA);
+  color: var(--text-primary, #111111);
+  font-weight: 800;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.memberMeta {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.memberName {
+  font-size: 13px;
+  font-weight: 800;
+  color: var(--text-primary, #111111);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.youBadge {
+  font-size: 9px;
+  font-weight: 900;
+  background: #111111;
+  color: #FFFFFF;
+  padding: 1px 5px;
+  border-radius: 4px;
+}
+
+.memberLevel {
+  font-size: 11px;
+  color: var(--text-muted, #8E8E93);
+}
+
+.memberRight {
+  display: flex;
+  align-items: center;
+}
+
+.statusPill {
+  font-size: 11px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: var(--surface-hover, #F0F0F2);
+  color: var(--text-secondary, #6E6E73);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.statusDone {
+  background: rgba(199, 255, 53, 0.25);
+  color: #2E5C00;
+  font-weight: 800;
+}
+
+[data-theme="dark"] .statusDone,
+[data-theme="night"] .statusDone {
+  background: rgba(199, 255, 53, 0.18);
+  color: var(--kaelo-lime, #C7FF35);
+}
+
+.actionRow {
+  display: flex;
+  gap: 8px;
+}
+
+.startFocusBtn {
+  flex: 1.4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 12px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 800;
+  border: none;
+  background: var(--kaelo-lime, #C7FF35);
+  color: #111111;
+  cursor: pointer;
+  transition: transform 0.15s ease;
+}
+
+.startFocusBtn:hover {
+  transform: scale(1.02);
+}
+
+.inviteBtn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 12px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 800;
+  border: 1px solid var(--border-subtle, rgba(0, 0, 0, 0.1));
+  background: var(--surface-card, #FFFFFF);
+  color: var(--text-primary, #111111);
+  cursor: pointer;
+}
+
+.squadNotice {
+  font-size: 11px;
+  color: var(--text-muted, #8E8E93);
+  text-align: center;
+  line-height: 1.4;
+  padding: 0 8px;
+}
+
+/* Dark & Night Mode Theme Overrides */
+[data-theme="dark"] .squadBadge,
+[data-theme="night"] .squadBadge {
+  color: var(--kaelo-lime, #C7FF35);
+  background: rgba(199, 255, 53, 0.15);
+}
+
+[data-theme="dark"] .youBadge,
+[data-theme="night"] .youBadge {
+  background: var(--kaelo-lime, #C7FF35);
+  color: #0E120E;
+}
+
+[data-theme="dark"] .squadHeroCard {
+  background: linear-gradient(165deg, #1A221A 0%, #121712 100%);
+  border-color: rgba(255, 255, 255, 0.12);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+}
+
+[data-theme="night"] .squadHeroCard {
+  background: linear-gradient(165deg, #241A47 0%, #171032 100%);
+  border-color: rgba(196, 181, 253, 0.25);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+}
+
+[data-theme="dark"] .memberRowYou,
+[data-theme="night"] .memberRowYou {
+  border-color: rgba(199, 255, 53, 0.45);
+  background: rgba(199, 255, 53, 0.08);
+}
+

@@ -1,0 +1,107 @@
+.card {
+  padding: clamp(14px, 3.5vw, 20px);
+  background: linear-gradient(145deg, var(--bg-card, #ffffff) 0%, rgba(169, 130, 255, 0.14) 100%);
+  border-radius: var(--radius-2xl, 24px);
+  border: 1px solid rgba(169, 130, 255, 0.28);
+  box-shadow: 0 4px 16px rgba(169, 130, 255, 0.08);
+  margin-bottom: 16px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.25s ease;
+}
+
+:global([data-theme="dark"]) .card {
+  background: linear-gradient(165deg, #181525 0%, #0E120E 100%);
+  border: 1px solid rgba(169, 130, 255, 0.3);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6);
+}
+
+:global([data-theme="night"]) .card {
+  background: linear-gradient(165deg, #241A47 0%, #150E2F 100%);
+  border: 1px solid rgba(169, 130, 255, 0.35);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.8px;
+  color: var(--accent-purple, #8B5CF6);
+  text-transform: uppercase;
+}
+
+.icon {
+  color: var(--accent-purple, #8B5CF6);
+}
+
+.protectedBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 10px;
+  font-weight: 800;
+  color: #111111;
+  background: var(--accent-lime, #C7FF35);
+  padding: 3px 8px;
+  border-radius: var(--radius-full, 9999px);
+}
+
+.content {
+  margin-bottom: 14px;
+}
+
+.briefText {
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--text-primary, #111111);
+  margin: 0 0 6px;
+}
+
+.briefText strong {
+  font-weight: 800;
+}
+
+.subText {
+  font-size: 12px;
+  color: var(--text-secondary, #6B7280);
+  line-height: 1.4;
+  margin: 0;
+}
+
+.cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--text-primary, #111111);
+  color: var(--bg-card, #ffffff);
+  border: 1px solid var(--border-color, #E8E8E3);
+  padding: 10px 16px;
+  border-radius: var(--radius-full, 9999px);
+  font-size: 12px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+:global([data-theme="dark"]) .cta,
+:global([data-theme="night"]) .cta {
+  background: var(--accent-lime, #C7FF35);
+  color: #0A0D0A;
+  border: none;
+  box-shadow: 0 4px 12px rgba(199, 255, 53, 0.35);
+}
+
+.cta:hover {
+  opacity: 0.95;
+  transform: translateX(2px);
+}

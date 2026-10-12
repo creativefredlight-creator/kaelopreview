@@ -1,0 +1,408 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  padding: 4px 0 16px;
+}
+
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 8px;
+  padding: 8px 12px;
+}
+
+.heroBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: var(--kaelo-lime-dark, #8EB81E);
+  background: rgba(199, 255, 53, 0.2);
+  padding: 4px 10px;
+  border-radius: 999px;
+}
+
+.heroTitle {
+  font-size: 20px;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  color: var(--text-primary, #111111);
+  margin: 0;
+}
+
+.heroSubtitle {
+  font-size: 13px;
+  color: var(--text-secondary, #6E6E73);
+  margin: 0;
+  max-width: 380px;
+  line-height: 1.4;
+}
+
+.toggleRow {
+  display: flex;
+  background: var(--surface-hover, #F0F0F2);
+  padding: 4px;
+  border-radius: 999px;
+  gap: 4px;
+  margin-top: 6px;
+}
+
+.cycleBtn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 16px;
+  font-size: 12px;
+  font-weight: 800;
+  border-radius: 999px;
+  border: none;
+  background: transparent;
+  color: var(--text-muted, #8E8E93);
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.cycleBtnActive {
+  background: var(--surface-card, #FFFFFF);
+  color: var(--text-primary, #111111);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+}
+
+.saveTag {
+  font-size: 9px;
+  font-weight: 900;
+  background: var(--kaelo-lime, #C7FF35);
+  color: #111111;
+  padding: 2px 6px;
+  border-radius: 6px;
+}
+
+.tiersGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.tierCard {
+  background: var(--surface-card, #FFFFFF);
+  border: 1px solid var(--border-subtle, rgba(0, 0, 0, 0.08));
+  border-radius: var(--radius-xl, 22px);
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  position: relative;
+  transition: all 0.18s ease;
+}
+
+.tierCardCurrent {
+  border-color: rgba(0, 0, 0, 0.2);
+}
+
+.tierCardPlus {
+  border: 2px solid var(--kaelo-lime, #C7FF35);
+  box-shadow: 0 4px 18px rgba(199, 255, 53, 0.15);
+}
+
+.tierCardPro {
+  border: 2px solid #A982FF;
+  box-shadow: 0 4px 18px rgba(169, 130, 255, 0.15);
+}
+
+.tierTop {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.tierNameRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.tierName {
+  font-size: 17px;
+  font-weight: 900;
+  letter-spacing: -0.01em;
+  color: var(--text-primary, #111111);
+  margin: 0;
+}
+
+.tierBadgeFree {
+  font-size: 10px;
+  font-weight: 800;
+  padding: 3px 8px;
+  border-radius: 6px;
+  background: var(--surface-hover, #F0F0F2);
+  color: var(--text-secondary, #6E6E73);
+}
+
+.tierBadgePlus {
+  font-size: 10px;
+  font-weight: 900;
+  padding: 3px 8px;
+  border-radius: 6px;
+  background: var(--kaelo-lime, #C7FF35);
+  color: #111111;
+}
+
+.tierBadgePro {
+  font-size: 10px;
+  font-weight: 900;
+  padding: 3px 8px;
+  border-radius: 6px;
+  background: #A982FF;
+  color: #FFFFFF;
+}
+
+.tierTagline {
+  font-size: 12px;
+  color: var(--text-secondary, #6E6E73);
+  margin: 0;
+}
+
+.priceRow {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+  margin-top: 4px;
+}
+
+.priceVal {
+  font-size: 26px;
+  font-weight: 900;
+  color: var(--text-primary, #111111);
+}
+
+.pricePeriod {
+  font-size: 12px;
+  color: var(--text-muted, #8E8E93);
+  font-weight: 600;
+}
+
+.featureList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.featureItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 12px;
+  color: var(--text-primary, #111111);
+  line-height: 1.4;
+}
+
+.checkIcon {
+  color: var(--text-muted, #8E8E93);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.checkIconPlus {
+  color: var(--kaelo-lime-dark, #8EB81E);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.checkIconPro {
+  color: #863BFF;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.upgradeBtnPlus {
+  width: 100%;
+  padding: 11px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 800;
+  border: none;
+  background: var(--kaelo-lime, #C7FF35);
+  color: #111111;
+  cursor: pointer;
+  transition: transform 0.15s ease;
+}
+
+.upgradeBtnPlus:hover {
+  transform: scale(1.02);
+}
+
+.upgradeBtnPro {
+  width: 100%;
+  padding: 11px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 800;
+  border: none;
+  background: #111111;
+  color: #FFFFFF;
+  cursor: pointer;
+  transition: transform 0.15s ease;
+}
+
+.upgradeBtnPro:hover {
+  transform: scale(1.02);
+}
+
+.activePlanTag {
+  width: 100%;
+  text-align: center;
+  padding: 9px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  background: var(--surface-hover, #F0F0F2);
+  color: var(--text-secondary, #6E6E73);
+}
+
+.xpAlternativeCard {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 16px;
+  border-radius: 16px;
+  background: rgba(169, 130, 255, 0.08);
+  border: 1px dashed rgba(169, 130, 255, 0.35);
+}
+
+.xpAltLeft {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.xpAltIcon {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: rgba(169, 130, 255, 0.2);
+  color: #863BFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.xpAltTitle {
+  font-size: 13px;
+  font-weight: 800;
+  color: var(--text-primary, #111111);
+}
+
+.xpAltDesc {
+  font-size: 11px;
+  color: var(--text-secondary, #6E6E73);
+  line-height: 1.35;
+}
+
+.xpAltBtn {
+  padding: 8px 14px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 800;
+  border: none;
+  background: #863BFF;
+  color: #FFFFFF;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: all 0.15s ease;
+}
+
+.xpAltBtn:disabled {
+  background: var(--surface-hover, #E5E5EA);
+  color: var(--text-muted, #8E8E93);
+  cursor: not-allowed;
+}
+
+.disclaimerText {
+  font-size: 10px;
+  color: var(--text-muted, #8E8E93);
+  text-align: center;
+  line-height: 1.4;
+  padding: 0 8px;
+}
+
+/* Dark & Night Mode Theme Overrides */
+[data-theme="dark"] .heroBadge,
+[data-theme="night"] .heroBadge {
+  color: var(--kaelo-lime, #C7FF35);
+  background: rgba(199, 255, 53, 0.15);
+}
+
+[data-theme="dark"] .tierCard {
+  background: #161D16;
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="night"] .tierCard {
+  background: #231945;
+  border-color: rgba(196, 181, 253, 0.2);
+}
+
+[data-theme="dark"] .tierCardCurrent,
+[data-theme="night"] .tierCardCurrent {
+  border-color: rgba(255, 255, 255, 0.25);
+}
+
+[data-theme="dark"] .checkIconPlus,
+[data-theme="night"] .checkIconPlus {
+  color: var(--kaelo-lime, #C7FF35);
+}
+
+[data-theme="dark"] .checkIconPro,
+[data-theme="night"] .checkIconPro {
+  color: #C4B5FD;
+}
+
+[data-theme="dark"] .upgradeBtnPro,
+[data-theme="night"] .upgradeBtnPro {
+  background: #FFFFFF;
+  color: #111111;
+  box-shadow: 0 4px 14px rgba(255, 255, 255, 0.15);
+}
+
+[data-theme="dark"] .xpAltIcon,
+[data-theme="night"] .xpAltIcon {
+  color: #C4B5FD;
+  background: rgba(169, 130, 255, 0.25);
+}
+
+[data-theme="dark"] .xpAltBtn,
+[data-theme="night"] .xpAltBtn {
+  background: #A982FF;
+  color: #0E0824;
+  font-weight: 800;
+}
+
+[data-theme="dark"] .toggleRow {
+  background: #111711;
+}
+
+[data-theme="night"] .toggleRow {
+  background: #160E33;
+}
+
+[data-theme="dark"] .cycleBtnActive {
+  background: #1F281F;
+  color: #FFFFFF;
+}
+
+[data-theme="night"] .cycleBtnActive {
+  background: #2D1F57;
+  color: #FFFFFF;
+}
+

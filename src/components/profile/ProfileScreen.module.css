@@ -1,0 +1,22 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  max-width: 480px;
+  margin: 0 auto;
+  background-color: var(--kaelo-bg, #FAFAF8);
+  color: var(--text-primary, #111111);
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: calc(84px + env(safe-area-inset-bottom, 0px));
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  padding: clamp(20px, 3.5vh, 32px) clamp(14px, 3.5vw, 20px) 24px;
+  padding-top: max(20px, env(safe-area-inset-top));
+  gap: clamp(18px, 3vh, 28px);
+}
+

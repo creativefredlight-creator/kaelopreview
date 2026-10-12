@@ -1,0 +1,102 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.title {
+  font-size: 18px;
+  font-weight: 800;
+  margin: 0;
+  color: var(--text-primary, #111111);
+  letter-spacing: -0.02em;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.card {
+  background-color: var(--bg-card, #FFFFFF);
+  border-radius: var(--radius-lg);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  border: 1px solid var(--border-color, rgba(255, 255, 255, 0.08));
+  box-shadow: var(--card-shadow);
+  transition: all 0.2s ease;
+}
+
+:global([data-theme="dark"]) .card {
+  background: linear-gradient(165deg, #151A15 0%, #0E120E 100%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
+}
+
+:global([data-theme="night"]) .card {
+  background: linear-gradient(165deg, #1D153B 0%, #120C26 100%);
+  border: 1px solid rgba(169, 130, 255, 0.25);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+}
+
+.unlocked {
+  background-color: rgba(199, 255, 53, 0.08);
+  border: 1.5px solid rgba(199, 255, 53, 0.7);
+  box-shadow: 0 0 16px rgba(199, 255, 53, 0.15);
+}
+
+:global([data-theme="dark"]) .unlocked {
+  background: linear-gradient(165deg, rgba(199, 255, 53, 0.12) 0%, rgba(199, 255, 53, 0.03) 100%);
+  border: 1.5px solid rgba(199, 255, 53, 0.65);
+  box-shadow: 0 0 20px rgba(199, 255, 53, 0.2);
+}
+
+:global([data-theme="night"]) .unlocked {
+  background: linear-gradient(165deg, rgba(169, 130, 255, 0.15) 0%, rgba(169, 130, 255, 0.04) 100%);
+  border: 1.5px solid rgba(169, 130, 255, 0.65);
+  box-shadow: 0 0 20px rgba(169, 130, 255, 0.2);
+}
+
+.locked {
+  opacity: 0.55;
+  filter: grayscale(1);
+  background: var(--bg-card-subtle, rgba(255, 255, 255, 0.03));
+}
+
+.iconWrapper {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  background-color: var(--bg-card-subtle, rgba(255, 255, 255, 0.06));
+}
+
+.unlocked .iconWrapper {
+  background-color: var(--accent-lime, #C7FF35);
+  box-shadow: 0 0 10px rgba(199, 255, 53, 0.4);
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.achTitle {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-primary, #111111);
+}
+
+.achDesc {
+  font-size: 11px;
+  color: var(--text-muted, #71717A);
+  line-height: 1.35;
+}

@@ -1,0 +1,176 @@
+.container {
+  display: inline-flex;
+  align-items: center;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.imageWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.12));
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+/* Avatar circular frame: Default vibrant Purple ambient aura */
+.avatar .imageWrapper {
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(169, 130, 255, 0.22) 0%, transparent 70%);
+}
+
+/* Behind Target: Urgent Coral/Red alert aura */
+.behindTarget .imageWrapper {
+  background: radial-gradient(circle, rgba(255, 59, 48, 0.35) 0%, transparent 72%) !important;
+}
+
+.warningGlow {
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  border: 2px dashed rgba(255, 59, 48, 0.7);
+  box-shadow: 0 0 16px rgba(255, 59, 48, 0.45);
+  pointer-events: none;
+  animation: warningPulse 1.8s infinite ease-in-out;
+}
+
+@keyframes warningPulse {
+  0%, 100% { transform: scale(1); opacity: 0.8; }
+  50% { transform: scale(1.08); opacity: 1; }
+}
+
+/* Speech Bubble */
+.speechBubble {
+  position: absolute;
+  background: var(--kaelo-white, #FFFFFF);
+  color: var(--kaelo-black, #111111);
+  padding: 6px 12px;
+  border-radius: 14px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+  border: 1.5px solid var(--kaelo-gray-200, #E8E8E3);
+  z-index: 10;
+  pointer-events: none;
+}
+
+.alertSpeech {
+  border-color: #FF3B30 !important;
+  color: #DC2626 !important;
+  background: #FFF1F0 !important;
+}
+
+.speech_right {
+  left: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  margin-left: 10px;
+}
+
+.speech_right::after {
+  content: '';
+  position: absolute;
+  right: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent var(--kaelo-white, #FFFFFF) transparent transparent;
+}
+
+.speech_top {
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-bottom: 10px;
+}
+
+.speech_top::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 5px;
+  border-style: solid;
+  border-color: var(--kaelo-white, #FFFFFF) transparent transparent transparent;
+}
+
+.speech_left {
+  right: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  margin-right: 10px;
+}
+
+/* Focus Ring */
+.focusRing {
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  border: 2px solid var(--kaelo-lime, #C7FF35);
+  box-shadow: 0 0 14px rgba(199, 255, 53, 0.8);
+  pointer-events: none;
+  animation: pulseAura 2s infinite ease-in-out;
+}
+
+@keyframes pulseAura {
+  0%, 100% { transform: scale(1); opacity: 0.8; }
+  50% { transform: scale(1.08); opacity: 1; }
+}
+
+/* Celebrate Burst */
+.celebrateBurst {
+  position: absolute;
+  inset: -12px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(169, 130, 255, 0.4) 0%, transparent 70%);
+  pointer-events: none;
+  animation: celebrateSpin 6s linear infinite;
+}
+
+@keyframes celebrateSpin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Dark & Night Mode Speech Bubble */
+:global([data-theme="dark"]) .speechBubble {
+  background: #1F1A30;
+  color: #FFFFFF;
+  border-color: rgba(169, 130, 255, 0.4);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.6);
+}
+
+:global([data-theme="dark"]) .speech_right::after {
+  border-color: transparent #1F1A30 transparent transparent;
+}
+
+:global([data-theme="dark"]) .speech_top::after {
+  border-color: #1F1A30 transparent transparent transparent;
+}
+
+:global([data-theme="night"]) .speechBubble {
+  background: #241A4C;
+  color: #FFFFFF;
+  border-color: rgba(169, 130, 255, 0.4);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.5);
+}
+
+:global([data-theme="night"]) .speech_right::after {
+  border-color: transparent #241A4C transparent transparent;
+}
+
+:global([data-theme="night"]) .speech_top::after {
+  border-color: #241A4C transparent transparent transparent;
+}

@@ -1,0 +1,82 @@
+.card {
+  border-radius: 24px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  overflow: hidden;
+}
+
+.clickable {
+  cursor: pointer;
+}
+
+.clickable:active {
+  transform: scale(0.98);
+}
+
+/* Variants */
+.variant-default {
+  background-color: var(--bg-card, #FFFFFF);
+  color: var(--text-primary, #111111);
+  box-shadow: var(--card-shadow, 0 4px 12px rgba(0, 0, 0, 0.05));
+  border: 1px solid var(--border-color, #F1F1ED);
+}
+
+.variant-elevated {
+  background-color: var(--bg-card-elevated, #FFFFFF);
+  color: var(--text-primary, #111111);
+  box-shadow: var(--card-shadow, 0 8px 24px rgba(0, 0, 0, 0.12));
+  border: 1px solid var(--border-color, rgba(255, 255, 255, 0.08));
+}
+
+.variant-dark {
+  background-color: var(--surface-dark, #111111);
+  color: #FFFFFF !important;
+  border: 1px solid var(--border-color, rgba(255, 255, 255, 0.12));
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6);
+}
+
+:global([data-theme="dark"]) .variant-default {
+  background-color: var(--bg-card, #141814);
+  border: 1px solid var(--border-color, rgba(255, 255, 255, 0.12));
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+}
+
+:global([data-theme="night"]) .variant-default {
+  background-color: var(--bg-card, #1D153B);
+  border: 1px solid var(--border-color, rgba(169, 130, 255, 0.25));
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
+}
+
+:global([data-theme="dark"]) .variant-elevated {
+  background-color: var(--bg-card-elevated, #1C231C);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6);
+}
+
+:global([data-theme="night"]) .variant-elevated {
+  background-color: var(--bg-card-elevated, #281E52);
+  border: 1px solid rgba(169, 130, 255, 0.28);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.45);
+}
+
+.variant-lime {
+  background-color: var(--accent-lime, #C7FF35);
+  color: var(--accent-lime-fg, #111111);
+  box-shadow: var(--shadow-lime, 0 4px 16px rgba(199, 255, 53, 0.25));
+}
+
+/* Padding */
+.padding-none {
+  padding: 0;
+}
+
+.padding-sm {
+  padding: 12px;
+}
+
+.padding-md {
+  padding: 20px;
+}
+
+.padding-lg {
+  padding: 28px;
+}

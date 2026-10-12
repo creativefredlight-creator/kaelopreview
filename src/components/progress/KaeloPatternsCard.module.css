@@ -1,0 +1,124 @@
+.card {
+  padding: 24px;
+  background: var(--bg-card, #FFFFFF);
+  border: 1px solid var(--border-color, #E8E8E3);
+  border-radius: var(--radius-xl);
+  margin-bottom: 24px;
+  box-shadow: var(--card-shadow);
+  transition: all 0.25s ease;
+}
+
+:global([data-theme="dark"]) .card {
+  background: linear-gradient(165deg, #151A15 0%, #0E120E 100%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 10px 32px rgba(0, 0, 0, 0.7);
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(169, 130, 255, 0.15);
+  color: var(--accent-purple, #A982FF);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  padding: 4px 10px;
+  border-radius: var(--radius-full);
+}
+
+.tagIcon {
+  color: var(--accent-purple, #A982FF);
+}
+
+.subtag {
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--text-muted, #9CA3AF);
+  letter-spacing: 0.05em;
+}
+
+.title {
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--text-primary, #111111);
+  margin-bottom: 6px;
+  letter-spacing: -0.02em;
+}
+
+.description {
+  font-size: 13px;
+  color: var(--text-secondary, #71717A);
+  line-height: 1.45;
+  margin-bottom: 20px;
+}
+
+.patternsList {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.patternItem {
+  display: flex;
+  gap: 14px;
+  padding: 14px;
+  background: var(--bg-card-subtle, #f1f1ed);
+  border: 1px solid var(--border-color, transparent);
+  border-radius: var(--radius-lg);
+  align-items: flex-start;
+}
+
+.iconBox {
+  width: 36px;
+  height: 36px;
+  border-radius: 12px;
+  background: var(--bg-card, #FFFFFF);
+  border: 1px solid var(--border-color, transparent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.patternContent {
+  flex: 1;
+}
+
+.patternTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 4px;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.patternTitle {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-primary, #111111);
+}
+
+.patternMetric {
+  font-size: 11px;
+  font-weight: 700;
+  color: #4F8CF7;
+  background: rgba(79, 140, 247, 0.1);
+  padding: 2px 8px;
+  border-radius: 6px;
+}
+
+.patternInsight {
+  font-size: 12px;
+  color: var(--text-secondary, #71717A);
+  line-height: 1.4;
+}

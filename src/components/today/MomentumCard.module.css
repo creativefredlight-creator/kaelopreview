@@ -1,0 +1,153 @@
+.card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 18px 20px;
+  background: var(--bg-card, #ffffff);
+  border-radius: var(--radius-2xl, 24px);
+  box-shadow: var(--card-shadow, var(--shadow-sm));
+  border: 1px solid var(--border-color, #e8e8e3);
+  margin-bottom: 16px;
+  transition: all 0.25s ease;
+}
+
+:global([data-theme="dark"]) .card {
+  background: linear-gradient(165deg, #151A15 0%, #0E120E 100%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 10px 32px rgba(0, 0, 0, 0.7);
+}
+
+:global([data-theme="night"]) .card {
+  background: linear-gradient(165deg, #1D153B 0%, #120C26 100%);
+  border: 1px solid rgba(169, 130, 255, 0.28);
+  box-shadow: 0 10px 32px rgba(0, 0, 0, 0.5);
+}
+
+.left {
+  flex-shrink: 0;
+}
+
+.ringWrapper {
+  position: relative;
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.svg {
+  transform: rotate(-90deg);
+}
+
+.track {
+  fill: transparent;
+  stroke: var(--bg-card-subtle, #f1f1ed);
+}
+
+:global([data-theme="dark"]) .track,
+:global([data-theme="night"]) .track {
+  stroke: rgba(255, 255, 255, 0.14);
+}
+
+.indicator {
+  fill: transparent;
+  stroke: var(--accent-lime, #C7FF35);
+  filter: drop-shadow(0 0 6px rgba(199, 255, 53, 0.45));
+}
+
+.ringContent {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.number {
+  font-size: 24px;
+  font-weight: 800;
+  line-height: 1;
+  color: var(--text-primary, #111111);
+}
+
+.right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.title {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.8px;
+  color: var(--text-muted, #999999);
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.badge {
+  font-size: 10px;
+  font-weight: 700;
+  color: #15803d;
+  background: #dcfce7;
+  padding: 2px 8px;
+  border-radius: var(--radius-full, 9999px);
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+}
+
+:global([data-theme="dark"]) .badge,
+:global([data-theme="night"]) .badge {
+  color: #C7FF35;
+  background: rgba(199, 255, 53, 0.15);
+  border: 1px solid rgba(199, 255, 53, 0.3);
+}
+
+.desc {
+  font-size: 12px;
+  color: var(--text-secondary, #555555);
+  line-height: 1.4;
+  margin: 2px 0 6px;
+}
+
+.metricsRow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.submetric {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-primary, #111111);
+}
+
+@media (max-width: 360px) {
+  .card {
+    padding: 14px 12px;
+    gap: 10px;
+  }
+  .ringWrapper {
+    width: 66px;
+    height: 66px;
+  }
+  .number {
+    font-size: 20px;
+  }
+  .desc {
+    font-size: 11px;
+  }
+}

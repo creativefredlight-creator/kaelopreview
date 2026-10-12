@@ -1,0 +1,57 @@
+.container {
+  background: var(--bg-card, #141814);
+  border-radius: 24px;
+  padding: 24px;
+  border: 1px solid var(--border-color, rgba(255, 255, 255, 0.08));
+  box-shadow: var(--card-shadow);
+  transition: all 0.25s ease;
+}
+
+:global([data-theme="dark"]) .container {
+  background: linear-gradient(165deg, #151A15 0%, #0E120E 100%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+:global([data-theme="night"]) .container {
+  background: linear-gradient(165deg, #1D153B 0%, #120C26 100%);
+  border: 1px solid rgba(169, 130, 255, 0.25);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.title {
+  font-size: 18px;
+  font-weight: 800;
+  margin: 0 0 20px;
+  color: var(--text-primary, #FFFFFF);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.statBox {
+  background-color: var(--bg-card-subtle, rgba(255, 255, 255, 0.04));
+  border: 1px solid var(--border-color, rgba(255, 255, 255, 0.06));
+  padding: 16px;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.value {
+  font-size: 24px;
+  font-weight: 800;
+  color: var(--accent-lime, #C7FF35);
+}
+
+.label {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text-muted, #A0A0A0);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}

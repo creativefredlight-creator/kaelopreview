@@ -1,0 +1,157 @@
+.logoContainer {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--font-display, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif);
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  user-select: none;
+  line-height: 1;
+}
+
+/* Sizes */
+.sm {
+  font-size: 16px;
+}
+
+.md {
+  font-size: 24px;
+}
+
+.lg {
+  font-size: 32px;
+}
+
+.xl {
+  font-size: 46px;
+}
+
+/* Electric Lime 'Kael' */
+.limeText {
+  color: var(--kaelo-lime, #C7FF35);
+  text-shadow: 0 0 20px rgba(199, 255, 53, 0.25);
+  font-weight: 900;
+}
+
+/* Custom 'o' with star counter */
+.oWrapper {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 0.76em;
+  height: 0.76em;
+  margin-left: 0.02em;
+  margin-right: 0.04em;
+  vertical-align: -0.04em;
+}
+
+.oRing {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: var(--kaelo-lime, #C7FF35);
+  box-shadow: 0 0 16px rgba(199, 255, 53, 0.3);
+}
+
+.starIcon {
+  position: relative;
+  z-index: 2;
+  width: 55%;
+  height: 55%;
+}
+
+/* Vibrant Purple 'AI' */
+.purpleAI {
+  color: var(--kaelo-purple, #9F66FC);
+  margin-left: 0.06em;
+  font-weight: 900;
+  text-shadow: 0 0 22px rgba(159, 102, 252, 0.3);
+}
+
+/* Image wrapper variant */
+.imageWrapper {
+  display: inline-flex;
+  align-items: center;
+}
+
+.imageWrapper.sm .logoImage {
+  height: 20px;
+}
+
+.imageWrapper.md .logoImage {
+  height: 32px;
+}
+
+.imageWrapper.lg .logoImage {
+  height: 48px;
+}
+
+.imageWrapper.xl .logoImage {
+  height: 64px;
+}
+
+.logoImage {
+  height: 32px;
+  width: auto;
+  object-fit: contain;
+}
+
+/* Badge wrapper variant (iconic dark capsule for light backgrounds) */
+.badgeWrapper {
+  display: inline-flex;
+  align-items: center;
+  background: #111111;
+  padding: 4px 14px;
+  border-radius: 9999px;
+  border: 1.5px solid #222222;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.18);
+  user-select: none;
+  line-height: 1;
+}
+
+.badgeWrapper.sm {
+  padding: 3px 10px;
+  font-size: 14px;
+}
+
+.badgeWrapper.md {
+  padding: 5px 14px;
+  font-size: 20px;
+}
+
+.badgeWrapper.lg {
+  padding: 6px 18px;
+  font-size: 28px;
+}
+
+.badgeWrapper .limeText {
+  color: var(--kaelo-lime, #C7FF35) !important;
+  text-shadow: 0 0 16px rgba(199, 255, 53, 0.4);
+}
+
+.badgeWrapper .oRing {
+  background: var(--kaelo-lime, #C7FF35) !important;
+}
+
+.badgeWrapper .purpleAI {
+  color: var(--kaelo-purple, #A982FF) !important;
+  text-shadow: 0 0 16px rgba(169, 130, 255, 0.4);
+}
+
+/* Light mode high-contrast fallback for un-encapsulated text on white surfaces */
+:global([data-theme="light"]) .logoContainer .limeText,
+:global(:root:not([data-theme="dark"]):not([data-theme="night"])) .logoContainer .limeText {
+  color: #79AE00;
+  text-shadow: 0 0 1px rgba(0, 0, 0, 0.2);
+}
+
+:global([data-theme="light"]) .logoContainer .oRing,
+:global(:root:not([data-theme="dark"]):not([data-theme="night"])) .logoContainer .oRing {
+  background: #79AE00;
+}
+
+:global([data-theme="light"]) .logoContainer .purpleAI,
+:global(:root:not([data-theme="dark"]):not([data-theme="night"])) .logoContainer .purpleAI {
+  color: #7C3AED;
+  text-shadow: none;
+}

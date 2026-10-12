@@ -1,0 +1,287 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.group {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.groupTitle {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-muted, #71717A);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin: 0;
+  padding-left: 4px;
+}
+
+.card {
+  background-color: var(--bg-card, #FFFFFF);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  border: 1px solid var(--border-color, #E8E8E3);
+  box-shadow: var(--card-shadow, 0 2px 10px rgba(0, 0, 0, 0.03));
+  transition: all 0.25s ease;
+}
+
+:global([data-theme="dark"]) .card {
+  background: linear-gradient(165deg, #151A15 0%, #0E120E 100%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+}
+
+:global([data-theme="night"]) .card {
+  background: linear-gradient(165deg, #1D153B 0%, #120C26 100%);
+  border: 1px solid rgba(169, 130, 255, 0.25);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+}
+
+.item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20px;
+  background-color: transparent;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.item:active {
+  background-color: var(--bg-card-subtle, #F1F1ED);
+}
+
+.itemLeft {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text-primary, #111111);
+}
+
+.icon {
+  color: var(--text-muted, #71717A);
+}
+
+.dangerIcon {
+  color: #DC2626;
+}
+
+.dangerText {
+  color: #DC2626;
+  font-weight: 600;
+}
+
+:global([data-theme="dark"]) .dangerIcon,
+:global([data-theme="dark"]) .dangerText,
+:global([data-theme="night"]) .dangerIcon,
+:global([data-theme="night"]) .dangerText {
+  color: #F87171;
+}
+
+.itemRight {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.value {
+  font-size: 14px;
+  color: var(--text-muted, #71717A);
+  font-weight: 500;
+}
+
+.valueHighlight {
+  font-size: 13px;
+  font-weight: 800;
+  color: #111111;
+  background: var(--accent-lime, #C7FF35);
+  padding: 3px 8px;
+  border-radius: 6px;
+}
+
+.chevron {
+  color: var(--text-muted, #A1A1AA);
+}
+
+.divider {
+  height: 1px;
+  background-color: var(--border-color, #F1F1ED);
+  margin: 0 20px;
+}
+
+.toggle {
+  width: 44px;
+  height: 24px;
+  background-color: var(--bg-card-subtle, #D8D8D2);
+  border: 1px solid var(--border-color, transparent);
+  border-radius: 12px;
+  position: relative;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.toggleOn {
+  background-color: var(--accent-lime, #C7FF35);
+  box-shadow: 0 0 10px rgba(199, 255, 53, 0.4);
+}
+
+.toggleKnob {
+  width: 18px;
+  height: 18px;
+  background-color: #FFFFFF;
+  border-radius: 50%;
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  transition: all 0.2s ease;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.toggleOn .toggleKnob {
+  left: 22px;
+  background-color: #111111;
+}
+
+/* Memory Manager Styling */
+.memoryCard {
+  background: var(--bg-card-subtle, #F7F7F4);
+  border: 1px solid var(--border-color, #E8E8E3);
+  border-radius: 14px;
+  padding: 12px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  transition: all 0.2s ease;
+}
+
+:global([data-theme="dark"]) .memoryCard {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+:global([data-theme="night"]) .memoryCard {
+  background: rgba(169, 130, 255, 0.08);
+  border-color: rgba(169, 130, 255, 0.2);
+}
+
+.memoryCardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.memoryCategoryBadge {
+  font-size: 9.5px;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  padding: 2px 7px;
+  border-radius: 6px;
+  background: var(--accent-lime, #C7FF35);
+  color: #0A0D0A;
+}
+
+:global([data-theme="night"]) .memoryCategoryBadge {
+  background: #C4B0FF;
+  color: #0E0824;
+}
+
+.memoryTitle {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: var(--text-primary, #111111);
+}
+
+.memoryDeleteBtn {
+  background: transparent;
+  border: none;
+  color: var(--text-muted, #71717A);
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.memoryDeleteBtn:hover {
+  color: #DC2626;
+  background: rgba(220, 38, 38, 0.1);
+}
+
+.memoryDetail {
+  font-size: 12.5px;
+  line-height: 1.45;
+  color: var(--text-secondary, #444444);
+  margin: 0;
+}
+
+.memoryMeta {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--text-muted, #9CA3AF);
+  margin-top: 2px;
+}
+
+.addMemoryContainer {
+  background: var(--bg-card-subtle, #F7F7F4);
+  border: 1.5px dashed var(--border-color, #D8D8D2);
+  border-radius: 14px;
+  padding: 14px;
+  margin-top: 14px;
+}
+
+:global([data-theme="dark"]) .addMemoryContainer {
+  background: rgba(255, 255, 255, 0.02);
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+:global([data-theme="night"]) .addMemoryContainer {
+  background: rgba(169, 130, 255, 0.04);
+  border-color: rgba(169, 130, 255, 0.25);
+}
+
+.memoryInput,
+.memoryTextarea,
+.memorySelect {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1.5px solid var(--border-color, #E8E8E3);
+  background: var(--bg-card, #FFFFFF);
+  color: var(--text-primary, #111111);
+  font-size: 12.5px;
+  font-family: inherit;
+  outline: none;
+}
+
+:global([data-theme="dark"]) .memoryInput,
+:global([data-theme="dark"]) .memoryTextarea,
+:global([data-theme="dark"]) .memorySelect {
+  background: #141B14;
+  border-color: rgba(255, 255, 255, 0.1);
+  color: #FFFFFF;
+}
+
+:global([data-theme="night"]) .memoryInput,
+:global([data-theme="night"]) .memoryTextarea,
+:global([data-theme="night"]) .memorySelect {
+  background: #1A1238;
+  border-color: rgba(169, 130, 255, 0.25);
+  color: #FFFFFF;
+}
+
+.memorySelect {
+  width: auto;
+  min-width: 110px;
+  cursor: pointer;
+}

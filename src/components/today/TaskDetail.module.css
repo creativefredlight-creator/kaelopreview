@@ -1,0 +1,83 @@
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.title {
+  font-size: clamp(20px, 5.5vw, 24px);
+  font-weight: 800;
+  margin: 0;
+  color: var(--text-primary, #111);
+}
+
+.badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.detailsList {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  background: var(--bg-card-subtle, #F7F7F4);
+  border: 1px solid var(--border-color, transparent);
+  padding: 16px;
+  border-radius: 14px;
+}
+
+:global([data-theme="dark"]) .detailsList {
+  background: #171E17;
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+:global([data-theme="night"]) .detailsList {
+  background: #241A47;
+  border-color: rgba(196, 181, 253, 0.22);
+}
+
+.detailRow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 14px;
+  color: var(--text-secondary, #444);
+}
+
+.xpText {
+  font-weight: 700;
+  color: var(--accent-purple, #A982FF);
+}
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.startButton {
+  width: 100%;
+  padding: 16px;
+  font-size: 16px;
+}
+
+.secondaryActions {
+  display: flex;
+  gap: 12px;
+}
+
+.secondaryActions > * {
+  flex: 1;
+}
+
+.deleteButton {
+  color: #EF4444;
+}
